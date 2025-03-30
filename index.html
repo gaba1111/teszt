@@ -2,64 +2,48 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
-  <title>Szállás árlekérdezés</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szállodai árlekérdezés</title>
 </head>
 <body>
-  <h2>Legkedvezőbb csomagár lekérése 2 felnőtt, egy 6, és egy 10 éves gyerek részére félpanzióval a Hotel Essencebe</h2>
+  <h1>Legjobb ár lekérdezése</h1>
 
-  <label for="erkezes">Érkezés:</label>
-  <input type="date" id="erkezes" required><br>
+  <label for="hotel">Válassz szállodát:</label>
+  <select id="hotel">
+    <option value="Hotel Essence">Hotel Essence</option>
+    <option value="Aquaworld Resort">Aquaworld Resort</option>
+  </select>
 
-  <label for="tavozas">Távozás:</label>
-  <input type="date" id="tavozas" required><br><br>
+  <br><br>
 
-  <button onclick="kerAr()">Ár lekérése</button>
+  <label for="arrive">Érkezés dátuma:</label>
+  <input type="date" id="arrive">
 
-  <p id="valasz"></p>
+  <label for="departure">Távozás dátuma:</label>
+  <input type="date" id="departure">
+
+  <br><br>
+
+  <button onclick="getPrice()">Ár lekérdezése</button>
+
+  <p id="result"></p>
 
   <script>
-    function kerAr() {
-      const erkezes = document.getElementById("erkezes").value;
-      const tavozas = document.getElementById("tavozas").value;
+    async function getPrice() {
+      const hotel = document.getElementById("hotel").value;
+      const arrive = document.getElementById("arrive").value;
+      const departure = document.getElementById("departure").value;
 
-      if (!erkezes || !tavozas) {
-        document.getElementById("valasz").innerText = "Kérlek, add meg mindkét dátumot!";
-        return;
-      }
-
-      const erk = new Date(erkezes);
-      const tav = new Date(tavozas);
-      const ma = new Date();
-      ma.setHours(0, 0, 0, 0); // csak a dátum számít, az idő nem
-
-      if (erk < ma) {
-        document.getElementById("valasz").innerText = "Az érkezés dátuma nem lehet múltbeli!";
-        return;
-      }
-
-      if (tav <= erk) {
-        document.getElementById("valasz").innerText = "A távozásnak legalább 1 nappal későbbinek kell lennie.";
-        return;
-      }
-
-      // ✅ Lekérdezés elküldése
-      fetch("https://hotel-ar-backend.onrender.com", {
+      const response = await fetch("https://YOUR_RENDER_URL/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          arrive: erkezes,
-          departure: tavozas
-        })
-      })
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("valasz").innerText = data;
-      })
-      .catch(error => {
-        document.getElementById("valasz").innerText = "Hiba: " + error;
+        body: JSON.stringify({ hotel, arrive, departure })
       });
+
+      const text = await response.text();
+      document.getElementById("result").innerText = text;
     }
   </script>
 </body>
