@@ -1,41 +1,66 @@
-<h2>Foglalási ár lekérése</h2>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Szállás árlekérdezés</title>
+</head>
+<body>
+  <h2>Foglalási ár lekérése</h2>
 
-<label for="erkezes">Érkezés:</label>
-<input type="date" id="erkezes" required>
-<br>
-<label for="tavozas">Távozás:</label>
-<input type="date" id="tavozas" required>
-<br><br>
-<button onclick="kerAr()">Ár lekérése</button>
+  <label for="erkezes">Érkezés:</label>
+  <input type="date" id="erkezes" required><br>
 
-<p id="valasz"></p>
+  <label for="tavozas">Távozás:</label>
+  <input type="date" id="tavozas" required><br><br>
 
-<script>
-function kerAr() {
-  const erkezes = document.getElementById("erkezes").value;
-  const tavozas = document.getElementById("tavozas").value;
+  <button onclick="kerAr()">Ár lekérése</button>
 
-  if (!erkezes || !tavozas) {
-    document.getElementById("valasz").innerText = "Kérlek, add meg mindkét dátumot!";
-    return;
-  }
+  <p id="valasz"></p>
 
-  fetch("https://hotel-ar-backend.onrender.com", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      arrive: erkezes,
-      departure: tavozas
-    })
-  })
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("valasz").innerText = data;
-  })
-  .catch(error => {
-    document.getElementById("valasz").innerText = "Hiba: " + error;
-  });
-}
-</script>
+  <script>
+    function kerAr() {
+      const erkezes = document.getElementById("erkezes").value;
+      const tavozas = document.getElementById("tavozas").value;
+
+      if (!erkezes || !tavozas) {
+        document.getElementById("valasz").innerText = "Kérlek, add meg mindkét dátumot!";
+        return;
+      }
+
+      const erk = new Date(erkezes);
+      const tav = new Date(tavozas);
+      const ma = new Date();
+      ma.setHours(0, 0, 0, 0); // csak a dátum számít, az idő nem
+
+      if (erk < ma) {
+        document.getElementById("valasz").innerText = "Az érkezés dátuma nem lehet múltbeli!";
+        return;
+      }
+
+      if (tav <= erk) {
+        document.getElementById("valasz").innerText = "A távozásnak legalább 1 nappal későbbinek kell lennie.";
+        return;
+      }
+
+      // ✅ Lekérdezés elküldése
+      fetch("https://a-te-render-urlod.onrender.com/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          arrive: erkezes,
+          departure: tavozas
+        })
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("valasz").innerText = data;
+      })
+      .catch(error => {
+        document.getElementById("valasz").innerText = "Hiba: " + error;
+      });
+    }
+  </script>
+</body>
+</html>
