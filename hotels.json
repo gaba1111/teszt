@@ -1,0 +1,60 @@
+[
+  {
+    "name": "Hotel Essence",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://booking.hotelessence.hu/hotels/hotelessence/iframe=1;lang=hu;ca_currency=HUF;iframe_key=1551"
+      },
+      {
+        "method": "POST",
+        "url": "https://hotelessence.nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://hotelessence.hu",
+          "method[params][hotelID]": "1198"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://booking.hotelessence.hu/hotels/hotelessence/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://hotelessence.nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "1198"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Aquaworld Resort",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://nethotelbooking.net/hotels/aquaworldresort"
+      },
+      {
+        "method": "POST",
+        "url": "https://nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://nethotelbooking.net/hotels/aquaworldresort/",
+          "method[params][hotelID]": "1100"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://nethotelbooking.net/hotels/aquaworldresort/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "1100"
+        }
+      }
+    ]
+  }
+]
