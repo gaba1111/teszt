@@ -272,7 +272,7 @@
         "method": "POST",
         "url": "https://thermal-hotel-visegrad.nethotelbooking.net/ajax/booking/index",
         "params": {
-          "method[params][target_origin]": "https://nethotelbooking.net/hotels/aquaworldresort/",
+          "method[params][target_origin]": "https://thv.hu",
           "method[params][hotelID]": "253"
         }
       },
