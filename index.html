@@ -1,29 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Hello Button</title>
-</head>
-<body>
-  <button onclick="getHello()">Kattints ide Tündérem!</button>
-  <p id="valasz"></p>
+<h2>Foglalási ár lekérése</h2>
 
-  <script>
-    function getHello() {
-      fetch("https://2d557b0f-b8da-40e5-bddc-291b90d3ddf8-00-3fyv9q5ei89j3.spock.replit.dev/")
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Hálózati hiba: " + response.status);
-          }
-          return response.text();
-        })
-        .then(data => {
-          document.getElementById("valasz").innerText = data;
-        })
-        .catch(error => {
-          document.getElementById("valasz").innerText = "Hiba: " + error;
-          console.error(error);
-        });
-    }
-  </script>
-</body>
-</html>
+<label for="erkezes">Érkezés:</label>
+<input type="date" id="erkezes" required>
+<br>
+<label for="tavozas">Távozás:</label>
+<input type="date" id="tavozas" required>
+<br><br>
+<button onclick="kerAr()">Ár lekérése</button>
+
+<p id="valasz"></p>
+
+<script>
+function kerAr() {
+  const erkezes = document.getElementById("erkezes").value;
+  const tavozas = document.getElementById("tavozas").value;
+
+  if (!erkezes || !tavozas) {
+    document.getElementById("valasz").innerText = "Kérlek, add meg mindkét dátumot!";
+    return;
+  }
+
+  fetch("https://2d557b0f-b8da-40e5-bddc-291b90d3ddf8-00-3fyv9q5ei89j3.spock.replit.dev/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      arrive: erkezes,
+      departure: tavozas
+    })
+  })
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("valasz").innerText = data;
+  })
+  .catch(error => {
+    document.getElementById("valasz").innerText = "Hiba: " + error;
+  });
+}
+</script>
