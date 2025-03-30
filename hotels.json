@@ -56,5 +56,266 @@
         }
       }
     ]
+  },
+   {
+    "name": "Balneo Hotel",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://balneohotel.nethotelbooking.net/hotels/balneohotel"
+      },
+      {
+        "method": "POST",
+        "url": "https://balneohotel.nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://balneohotel.hu",
+          "method[params][hotelID]": "599"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://foglalas.balneohotel.hu/hotels/balneohotel/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://balneohotel.nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "599"
+        }
+      }
+    ]
+  },
+   {
+    "name": "Bambara Hotel",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://booking.bambara.hu/hotels/bambara/iframe=1;lang=hu;ca_currency=HUF;iframe_key=128"
+      },
+      {
+        "method": "POST",
+        "url": "https://bambara.nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://bambara.hu",
+          "method[params][hotelID]": "307"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://booking.bambara.hu/hotels/bambara/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "307"
+        }
+      }
+    ]
+  },
+   {
+    "name": "Divinus Hotel",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://booking.hoteldivinus.hu/hotels/divinushotel/iframe=1;lang=hu;ca_currency=HUF;iframe_key=1066"
+      },
+      {
+        "method": "POST",
+        "url": "https://divinushotel.nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://hoteldivinus.hu",
+          "method[params][hotelID]": "908"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://booking.hoteldivinus.hu/hotels/divinushotel/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "908"
+        }
+      }
+    ]
+  },
+   {
+    "name": "Hotel Azúr",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://booking.hotelazur.hu/hotels/hotelazur/iframe=1;lang=hu;ca_currency=HUF;iframe_key=390"
+      },
+      {
+        "method": "POST",
+        "url": "https://hotelazur.nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://hotelazur.hu",
+          "method[params][hotelID]": "506"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://booking.hotelazur.hu/hotels/hotelazur/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://hotelazur.nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "506"
+        }
+      }
+    ]
+  },
+   {
+    "name": "Hotel Silvanus",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://booking.hotelsilvanus.hu/hotels/hotelsilvanus/iframe=1;lang=hu;ca_currency=HUF;iframe_key=171"
+      },
+      {
+        "method": "POST",
+        "url": "https://hotelsilvanus.nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://hotelsilvanus.hu/",
+          "method[params][hotelID]": "334"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://booking.hotelsilvanus.hu/hotels/hotelsilvanus/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://hotelsilvanus.nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "334"
+        }
+      }
+    ]
+  },
+   {
+    "name": "Lifestyle Mátra",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://lifestylehotelmatra.nethotelbooking.net/hotels/lifestylehotelmatra"
+      },
+      {
+        "method": "POST",
+        "url": "https://lifestylehotelmatra.nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://lifestylehotelmatra.hu",
+          "method[params][hotelID]": "770"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://booking.lifestylehotelmatra.hu/hotels/lifestylehotelmatra/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://lifestylehotelmatra.nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "770"
+        }
+      }
+    ]
+  },
+   {
+    "name": "Ózon Hotel",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://nethotelbooking.net/hotels/residencehotelozon"
+      },
+      {
+        "method": "POST",
+        "url": "https://nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://hotelozon.hu/",
+          "method[params][hotelID]": "70"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://nethotelbooking.net/hotels/residencehotelozon/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "70"
+        }
+      }
+    ]
+  },
+   {
+    "name": "Termál Hotel Visegrád",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://booking.thv.hu/hotels/thermal-hotel-visegrad/iframe=1;lang=hu;ca_currency=HUF;iframe_key=155"
+      },
+      {
+        "method": "POST",
+        "url": "https://thermal-hotel-visegrad.nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://nethotelbooking.net/hotels/aquaworldresort/",
+          "method[params][hotelID]": "253"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://booking.thv.hu/hotels/thermal-hotel-visegrad/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://thermal-hotel-visegrad.nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "253"
+        }
+      }
+    ]
+  },
+   {
+    "name": "Velence Resort",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://nethotelbooking.net/hotels/velencespa"
+      },
+      {
+        "method": "POST",
+        "url": "https://nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://nethotelbooking.net/hotels/velencespa/",
+          "method[params][hotelID]": "83"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://nethotelbooking.net/hotels/velencespa/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "83"
+        }
+      }
+    ]
   }
 ]
