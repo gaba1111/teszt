@@ -3,6 +3,7 @@ from flask_cors import CORS
 from requests import Session
 import json
 import os
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 CORS(app)  # engedélyezi a GitHub Pages-ről jövő fetch kéréseket
@@ -21,6 +22,21 @@ def ar_lekeres():
             if not arrive or not departure:
                 return "Hiányzik az érkezési vagy távozási dátum!"
 
+
+            try:
+                erkezes_datum = datetime.strptime(arrive, "%Y-%m-%d").date()
+                tavozas_datum = datetime.strptime(departure, "%Y-%m-%d").date()
+            except ValueError:
+                return "Érvénytelen dátumformátum!"
+
+            ma = datetime.now().date()
+
+            if erkezes_datum < ma:
+                return "Az érkezés dátuma nem lehet múltbeli."
+
+            if tavozas_datum <= erkezes_datum:
+                return "A távozásnak legalább 1 nappal későbbinek kell lennie az érkezésnél."
+        
             session = Session()
             HEADERS = {
                 'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
