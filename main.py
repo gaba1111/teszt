@@ -118,6 +118,7 @@ def get_cheapest_price():
     except Exception:
         return "Nem sikerült feldolgozni a 'packages' részt."
 
+    # REQUEST 4
     ar_list = []
     for price_type, price_index in talalatok:
         data4 = {
@@ -129,7 +130,6 @@ def get_cheapest_price():
             'method[params][pricetype]': price_type,
             'method[params][priceindex]': price_index,
             'method[params][roomID]': room_id,
-            'method[params][priceID]': '21600',
             'method[params][lang]': 'hu',
             'method[params][hotelID]': '1198',
         }
