@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hello Netlify</title>
+  <title>Hello Button</title>
 </head>
 <body>
-  <h1>Hello Netlify!</h1>
-  <button onclick="alert('Szia a Netlifyról!')">Kattints ide</button>
+  <button onclick="getHello()">Kattints ide 2!</button>
+  <p id="valasz"></p>
+
+  <script>
+    function getHello() {
+      fetch("https://2d557b0f-b8da-40e5-bddc-291b90d3ddf8-00-3fyv9q5ei89j3.spock.replit.dev/")
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Hálózati hiba: " + response.status);
+          }
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById("valasz").innerText = data;
+        })
+        .catch(error => {
+          document.getElementById("valasz").innerText = "Hiba: " + error;
+          console.error(error);
+        });
+    }
+  </script>
 </body>
 </html>
