@@ -63,11 +63,11 @@
     "requests": [
       {
         "method": "GET",
-        "url": "https://balneohotel.nethotelbooking.net/hotels/balneohotel"
+        "url": "https://nethotelbooking.net/hotels/balneohotel"
       },
       {
         "method": "POST",
-        "url": "https://balneohotel.nethotelbooking.net/ajax/booking/index",
+        "url": "https://nethotelbooking.net/ajax/booking/index",
         "params": {
           "method[params][target_origin]": "https://balneohotel.hu",
           "method[params][hotelID]": "599"
@@ -75,11 +75,11 @@
       },
       {
         "method": "GET",
-        "url_template": "https://foglalas.balneohotel.hu/hotels/balneohotel/page=booking;roomNumber=0;sid={sid}"
+        "url_template": "https://nethotelbooking.net/hotels/balneohotel/page=booking;roomNumber=0;sid={sid}"
       },
       {
         "method": "POST",
-        "url": "https://balneohotel.nethotelbooking.net/ajax/booking/booking",
+        "url": "https://nethotelbooking.net/ajax/booking/booking",
         "params": {
           "method[params][hotelID]": "599"
         }
