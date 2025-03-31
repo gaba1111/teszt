@@ -59,7 +59,8 @@ def get_price(hotel_config, arrive, departure):
 
         if arak:
             legkisebb = int(min(arak))
-            return f"A legkedvezőbb ár: {legkisebb:,} Ft\n\n📦 Feldolgozott csomagok:\n" + "\n".join([f"{n} – {int(p):,} Ft".replace(",", " ") for n, p in feldolgozott if isinstance(p, (int, float))])
+            return f"📅 Dátumok: {arrive} → {departure}\nA legkedvezőbb ár: {int(min(arak)):,} Ft".replace(",", " ")
+
         else:
             return "Nem található megfelelő csomag a feltételek alapján."
 
