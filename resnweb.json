@@ -92,7 +92,7 @@
     "requests": [
       {
         "method": "GET",
-        "url": "http://api.scraperapi.com?api_key=c401c39c3f0f84264c25fb763591324f&url=https%3A%2F%2Fnethotelbooking.net%2Fhotels%2Fbambara"
+        "url": "https://api.webscrapingapi.com/v2?api_key=iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn&url=https%3A%2F%2Fnethotelbooking.net%2Fhotels%2Fbambara"
       },
       {
         "method": "POST",
