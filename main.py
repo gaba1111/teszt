@@ -2,6 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 import json
 import resnweb
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -16,23 +17,25 @@ def get_price():
     arrive = adatok.get("arrive")
     departure = adatok.get("departure")
 
-    with open("hotels.json", encoding="utf-8") as f:
-        hotels = json.load(f)
-
-    hotel = next((h for h in hotels if h["name"] == hotel_nev), None)
-    if not hotel:
-        return "A megadott szálloda nem található."
-
     engine = hotel.get("engine")
+    json_file = f"{engine}.json"
+
+    if not os.path.exists(json_file):
+        return f"Nincs konfigurációs fájl a(z) {engine} motorhoz."
+
+    with open(json_file, encoding="utf-8") as f:
+        engine_hotels = json.load(f)
+
+    engine_hotel = next((h for h in engine_hotels if h["name"] == hotel_nev), None)
+    if not engine_hotel:
+        return f"A(z) {hotel_nev} szálloda nem található a {engine} konfigurációban."
+
     if engine == "resnweb":
-        with open("resnweb.json", encoding="utf-8") as f:
-            resnweb_hotels = json.load(f)
-        resnweb_hotel = next((h for h in resnweb_hotels if h["name"] == hotel_nev), None)
-        if not resnweb_hotel:
-            return "A szálloda nem található a resnweb konfigurációban."
-        return resnweb.get_price(resnweb_hotel, arrive, departure)
+        return resnweb.get_price(engine_hotel, arrive, departure)
+    elif engine == "roomsome":
+        return roomsome.get_price(engine_hotel, arrive, departure)
     else:
-        return "Nem támogatott foglalómotor: " + engine
+        return f"Nem támogatott foglalómotor: {engine}"
 
 if __name__ == "__main__":
     import os
