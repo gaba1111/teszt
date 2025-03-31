@@ -33,24 +33,25 @@ def get_price(hotel_config, arrive, departure):
 
     try:
         start_index = text.find(start_marker)
-        end_index = text.find(end_marker) + 3
+        end_index = text.find(end_marker)
         json_str = text[start_index:end_index]
         data = json.loads(json_str)
 
         impressions = data["ecommerce"]["impressions"]
-        kulcsszavak = ["senior", "szenior", "nyugdíjas", "all inclusive", "all inkluzív"]
+        kizart_szavak = ["senior", "szenior", "nyugdíjas", "all inclusive", "all inkluzív"]
 
         arak = []
         for csomag in impressions:
             nev = csomag.get("name", "").lower()
-            if any(k in nev for k in kulcsszavak):
+            if any(k in nev for k in kizart_szavak):
                 continue
             if "reggeli" in nev and "vacsor" not in nev:
                 continue
-            if ("reggeli" in nev and "vacsor" in nev) or "félpanzió" in nev:
-                ar = csomag.get("price")
-                if isinstance(ar, (int, float)):
-                    arak.append(ar)
+            # ha semmi kizáró nincs, akkor elfogadható a csomag
+            ar = csomag.get("price")
+            if isinstance(ar, (int, float)):
+                arak.append(ar)
+
         if arak:
             return f"A legkedvezőbb ár: {int(min(arak)):,} Ft".replace(",", " ")
         else:
