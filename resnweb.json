@@ -75,7 +75,7 @@
       },
       {
         "method": "GET",
-        "url_template": "https://nethotelbooking.net/hotels/balneohotel/page=booking;roomNumber=0;sid={sid}"
+        "url_template": "https://foglalas.balneohotel.hu/hotels/balneohotel/page=booking;roomNumber=0;sid={sid}"
       },
       {
         "method": "POST",
