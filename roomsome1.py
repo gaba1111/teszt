@@ -41,7 +41,7 @@ def get_price(hotel_config, arrive, departure):
         kulcsszavak = ["senior", "szenior", "nyugdíjas", "all inclusive", "all inkluzív"]
 
         arak = []
-        for csomag in impressions.values():
+        for csomag in impressions:
             nev = csomag.get("name", "").lower()
             if any(k in nev for k in kulcsszavak):
                 continue
