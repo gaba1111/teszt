@@ -21,7 +21,8 @@ def get_price(hotel_config, arrive, departure):
         "testcalcresresult": "1"
     }
 
-    response = session.post(url, data=payload, allow_redirects=True)
+    headers = {"Content-Type": "application/x-www-form-urlencoded"}
+    response = session.post(url, data=payload, headers=headers, allow_redirects=True)
     if response.status_code != 200:
         return f"A kérés sikertelen volt. HTTP státuszkód: {response.status_code}"
 
