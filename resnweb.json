@@ -92,11 +92,11 @@
     "requests": [
       {
         "method": "GET",
-        "url": "http://api.scraperapi.com?api_key=c401c39c3f0f84264c25fb763591324f&url=https://https://nethotelbooking.net/hotels/bambara"
+        "url": "https://https://nethotelbooking.net/hotels/bambara"
       },
       {
         "method": "POST",
-        "url": "http://api.scraperapi.com?api_key=c401c39c3f0f84264c25fb763591324f&url=https://nethotelbooking.net/ajax/booking/index",
+        "url": "https://nethotelbooking.net/ajax/booking/index",
         "params": {
           "method[params][target_origin]": "https://bambara.hu",
           "method[params][hotelID]": "307"
@@ -104,11 +104,11 @@
       },
       {
         "method": "GET",
-        "url_template": "http://api.scraperapi.com?api_key=c401c39c3f0f84264c25fb763591324f&url=https://nethotelbooking.net/hotels/bambara/page=booking;roomNumber=0;sid={sid}"
+        "url_template": "https://nethotelbooking.net/hotels/bambara/page=booking;roomNumber=0;sid={sid}"
       },
       {
         "method": "POST",
-        "url": "http://api.scraperapi.com?api_key=c401c39c3f0f84264c25fb763591324f&url=https://nethotelbooking.net/ajax/booking/booking",
+        "url": "https://nethotelbooking.net/ajax/booking/booking",
         "params": {
           "method[params][hotelID]": "307"
         }
