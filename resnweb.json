@@ -92,11 +92,11 @@
     "requests": [
       {
         "method": "GET",
-        "url": "https://https://nethotelbooking.net/hotels/bambara"
+        "url": "https://booking.bambara.hu/hotels/bambara/iframe=1;lang=hu;ca_currency=HUF;iframe_key=128"
       },
       {
         "method": "POST",
-        "url": "https://nethotelbooking.net/ajax/booking/index",
+        "url": "https://bambara.nethotelbooking.net/ajax/booking/index",
         "params": {
           "method[params][target_origin]": "https://bambara.hu",
           "method[params][hotelID]": "307"
@@ -104,7 +104,7 @@
       },
       {
         "method": "GET",
-        "url_template": "https://nethotelbooking.net/hotels/bambara/page=booking;roomNumber=0;sid={sid}"
+        "url_template": "https://booking.bambara.hu/hotels/bambara/page=booking;roomNumber=0;sid={sid}"
       },
       {
         "method": "POST",
