@@ -2,11 +2,13 @@ import json
 import re
 from requests import Session
 from json import JSONDecoder
+from urllib.parse import quote
 
 def get_price(hotel_config, arrive, departure):
     base_url = hotel_config["url"].rstrip("/")  # pl. https://calimbrawellnesshotel.hu/online-foglalas
-    post_url = f"https://api.webscrapingapi.com/v2?api_key=iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn&url={base_url}%2Fkereses"
-    get_url = f"https://api.webscrapingapi.com/v2?api_key=iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn&url={base_url}%2Fszobavalasztas"
+    post_url = f"https://api.webscrapingapi.com/v2?api_key=YOUR_API_KEY&url={quote(base_url + '/kereses', safe='')}"
+    get_url = f"https://api.webscrapingapi.com/v2?api_key=YOUR_API_KEY&url={quote(base_url + '/szobavalasztas', safe='')}"
+
 
     session = Session()
 
