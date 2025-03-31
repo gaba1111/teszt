@@ -95,8 +95,12 @@ def get_price(hotel_config, arrive, departure):
         talalatok = []
         for csomag in parsed_packages:
             nev = csomag.get("name", "").lower()
-            etrend = csomag.get("visibleMealplan", {}).get("name", "").lower()
-            if not any(k in nev for k in kulcsszavak) and "félpanzió" in etrend:
+            visible_mealplan = csomag.get("visibleMealplan") or {}
+            etrend = visible_mealplan.get("name", "").lower()
+
+            van_felpanzio = "félpanzió" in etrend or "félpanzió" in nev
+
+            if not any(k in nev for k in kulcsszavak) and van_felpanzio:
                 price_type = csomag.get("priceType")
                 price_index = csomag.get("priceIndex")
                 talalatok.append((price_type, price_index))
