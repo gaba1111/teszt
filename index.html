@@ -10,17 +10,17 @@
 
   <label for="hotel">Válassz szállodát:</label>
   <select id="hotel">
-    <option value="Aquaworld Resort">Aquaworld Resort</option>
-    <option value="Balneo Hotel">Balneo Hotel</option>
-    <option value="Bambara Hotel">Bambara Hotel</option>
-    <option value="Divinus Hotel">Divinus Hotel</option>
-    <option value="Hotel Azúr">Hotel Azúr</option>
-    <option value="Hotel Essence">Hotel Essence</option>
-    <option value="Hotel Silvanus">Hotel Silvanus</option>
-    <option value="Lifestyle Mátra">Lifestyle Mátra</option>
-    <option value="Ózon Hotel">Ózon Hotel</option>
-    <option value="Termal Hotel Visegrád">Termal Hotel Visegrád</option>
-    <option value="Velence Resort">Velence Resort</option>
+    <option value="Aquaworld Resort|resnweb">Aquaworld Resort</option>
+    <option value="Balneo Hotel|resnweb">Balneo Hotel</option>
+    <option value="Bambara Hotel|resnweb">Bambara Hotel</option>
+    <option value="Divinus Hotel|resnweb">Divinus Hotel</option>
+    <option value="Hotel Azúr|resnweb">Hotel Azúr</option>
+    <option value="Hotel Essence|resnweb">Hotel Essence</option>
+    <option value="Hotel Silvanus|resnweb">Hotel Silvanus</option>
+    <option value="Lifestyle Mátra|resnweb">Lifestyle Mátra</option>
+    <option value="Ózon Hotel|resnweb">Ózon Hotel</option>
+    <option value="Termal Hotel Visegrád|resnweb">Termal Hotel Visegrád</option>
+    <option value="Velence Resort|resnweb">Velence Resort</option>
   </select>
 
   <br><br>
@@ -39,16 +39,17 @@
 
   <script>
     async function getPrice() {
-      const hotel = document.getElementById("hotel").value;
+      const selected = document.getElementById("hotel").value;
+      const [hotel, engine] = selected.split("|");
       const arrive = document.getElementById("arrive").value;
       const departure = document.getElementById("departure").value;
 
-      const response = await fetch("https://hotel-ar-backend.onrender.com", {
+      const response = await fetch("https://YOUR_RENDER_URL/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ hotel, arrive, departure })
+        body: JSON.stringify({ hotel, engine, arrive, departure })
       });
 
       const text = await response.text();
