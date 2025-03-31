@@ -92,7 +92,7 @@
     "requests": [
       {
         "method": "GET",
-        "url": "https://booking.bambara.hu/hotels/bambara/iframe=1;lang=hu;ca_currency=HUF;iframe_key=128"
+        "url": "https://https://nethotelbooking.net/hotels/bambara"
       },
       {
         "method": "POST",
@@ -104,7 +104,7 @@
       },
       {
         "method": "GET",
-        "url_template": "https://booking.bambara.hu/hotels/bambara/page=booking;roomNumber=0;sid={sid}"
+        "url_template": "https://nethotelbooking.net/hotels/bambara/page=booking;roomNumber=0;sid={sid}"
       },
       {
         "method": "POST",
