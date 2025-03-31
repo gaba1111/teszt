@@ -1,34 +1,34 @@
 [
   {
     "name": "Calimbra Wellness Hotel",
-    "url": "https://api.webscrapingapi.com/v2?api_key=iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn&url=https%3A%2F%2Fcalimbrawellnesshotel.hu%2Fonline-foglalas%2Fkereses"
+    "url": "https://calimbrawellnesshotel.hu/online-foglalas/"
   },
   {
     "name": "Grand Hotel Esztergom",
-    "url": "https://grandhotesztergom.hu/online-foglalas/kereses"
+    "url": "https://grandhotesztergom.hu/online-foglalas/"
   },
   {
     "name": "Hotel Caramell",
-    "url": "https://booking.caramell.hu/online-foglalas/kereses"
+    "url": "https://booking.caramell.hu/online-foglalas/"
   },
   {
     "name": "Hotel Kapitány Sümeg",
-    "url": "https://hotelkapitany.hu/online-foglalas/kereses"
+    "url": "https://hotelkapitany.hu/online-foglalas/"
   },
   {
     "name": "Hotel MenDan",
-    "url": "https://wellnesshotelmendan.hu/online-foglalas/kereses"
+    "url": "https://wellnesshotelmendan.hu/online-foglalas/"
   },
   {
     "name": "Hotel Silver",
-    "url": "https://hotelsilver.hu/online-foglalas/kereses"
+    "url": "https://hotelsilver.hu/online-foglalas/"
   },
   {
     "name": "Thermal Hotel Balance",
-    "url": "https://booking.balanceresort.hu/online-foglalas/kereses"
+    "url": "https://booking.balanceresort.hu/online-foglalas/"
   },
   {
     "name": "Wellness Hotel Gyula",
-    "url": "https://wellnesshotelgyula.hu/online-foglalas/kereses"
+    "url": "https://wellnesshotelgyula.hu/online-foglalas/"
   }
 ]
