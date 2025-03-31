@@ -33,7 +33,7 @@ def get_price(hotel_config, arrive, departure):
 
     try:
         start_index = text.find(start_marker)
-        end_index = text.find(end_marker) + 4
+        end_index = text.find(end_marker) + 3
         json_str = text[start_index:end_index]
         data = json.loads(json_str)
 
