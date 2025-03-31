@@ -1,43 +1,44 @@
 import json
-import re
 from requests import Session
 from json import JSONDecoder
+from urllib.parse import quote_plus
 
 def get_price(hotel_config, arrive, departure):
-    url = hotel_config["url"]
+    base_url = hotel_config["url"]  # pl. https://calimbrawellnesshotel.hu/online-foglalas/
+    api_key = "iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn"
     session = Session()
 
+    # 1️⃣ POST request a 'kereses' végponttal
+    post_url = f"https://api.webscrapingapi.com/v2?api_key={api_key}&url={quote_plus(base_url + 'kereses')}"
     payload = {
-        "room_persons[0][adult]": "2",
-        "room_persons[0][child]": "2",
-        "room_persons[0][child_ages][0]": "6",
-        "room_persons[0][child_ages][1]": "10",
+        "room_persons[0][adult]": 2,
+        "room_persons[0][child]": 2,
+        "room_persons[0][child_ages][0]": 6,
+        "room_persons[0][child_ages][1]": 10,
         "arrival": arrive,
         "departure": departure,
-        "rooms": "1",
+        "rooms": 1,
         "lang": "hu",
-        "subpage_num": "1",
-        "subpage_num_next": "2",
-        "testcalcresresult": "1"
+        "subpage_num": 1,
+        "subpage_num_next": 2
     }
 
-    response = session.post(url, data=payload, allow_redirects=True)
+    response1 = session.post(post_url, data=payload, allow_redirects=True)
+    if response1.status_code != 200:
+        return f"A POST kérés sikertelen volt. HTTP státuszkód: {response1.status_code}"
 
-    # DEBUG: kiíratjuk a ténylegesen elküldött kérés adatait
-    sent_headers = response.request.headers
-    sent_body = response.request.body
+    # 2️⃣ GET kérés a 'szobavalasztas' oldalra ugyanazzal a base URL-lel
+    get_url = f"https://api.webscrapingapi.com/v2?api_key={api_key}&url={quote_plus(base_url + 'szobavalasztas')}"
+    response2 = session.get(get_url)
+    if response2.status_code != 200:
+        return f"A GET kérés sikertelen volt. HTTP státuszkód: {response2.status_code}"
 
-    debug_info = f"\n📤 Elküldött kérés fejlécei:\n{sent_headers}\n\n📄 Elküldött kérés body:\n{sent_body}"
-
-    if response.status_code != 200:
-        return f"A kérés sikertelen volt. HTTP státuszkód: {response.status_code}{debug_info}"
-
-    text = response.text
+    text = response2.text
     start_marker = '{"ecommerce":{"'
     end_marker = ']}});dataLayer.push'
 
     if start_marker not in text or end_marker not in text:
-        return f"Nincs szabad szoba a megadott dátumokra.{debug_info}"
+        return "Nincs szabad szoba a megadott dátumokra."
 
     try:
         start_index = text.find(start_marker)
@@ -57,14 +58,15 @@ def get_price(hotel_config, arrive, departure):
                 continue
             if "reggeli" in nev and "vacsor" not in nev:
                 continue
+            # Ha egyik kizáró feltétel sem áll fenn, az ár mehet
             ar = csomag.get("price")
             if isinstance(ar, (int, float)):
                 arak.append(ar)
 
         if arak:
-            return f"A legkedvezőbb ár: {int(min(arak)):,} Ft".replace(",", " ") + debug_info
+            return f"A legkedvezőbb ár: {int(min(arak)):,} Ft".replace(",", " ")
         else:
-            return "Nem található megfelelő csomag a feltételek alapján." + debug_info
+            return "Nem található megfelelő csomag a feltételek alapján."
 
     except Exception as e:
-        return f"Hiba történt a válasz feldolgozása közben: {e}{debug_info}"
+        return f"Hiba történt a válasz feldolgozása közben: {e}"
