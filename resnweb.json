@@ -63,11 +63,11 @@
     "requests": [
       {
         "method": "GET",
-        "url": "https://nethotelbooking.net/hotels/balneohotel"
+        "url": "https://balneohotel.nethotelbooking.net/hotels/balneohotel"
       },
       {
         "method": "POST",
-        "url": "https://nethotelbooking.net/ajax/booking/index",
+        "url": "https://balneohotel.nethotelbooking.net/ajax/booking/index",
         "params": {
           "method[params][target_origin]": "https://balneohotel.hu",
           "method[params][hotelID]": "599"
