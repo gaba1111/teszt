@@ -96,7 +96,7 @@
       },
       {
         "method": "POST",
-        "url": "https://bambara.nethotelbooking.net/ajax/booking/index",
+        "url": "https://nethotelbooking.net/ajax/booking/index",
         "params": {
           "method[params][target_origin]": "https://bambara.hu",
           "method[params][hotelID]": "307"
