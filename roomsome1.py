@@ -34,7 +34,11 @@ def get_price(hotel_config, arrive, departure):
     try:
         start_index = text.find(start_marker)
         end_index = text.find(end_marker)
-        json_str = text[start_index:end_index]
+        json_str = text[start_index:end_index + 3]  # +3 to include ]}}
+
+        # VISSZAADJUK A KIVÁGOTT SZÖVEGET HIBAKERESÉSRE
+        return f"✅ Kivágott JSON szöveg első 300 karaktere:\n{json_str[:300]}\n\n...\n\nUtolsó 300 karakter:\n{json_str[-300:]}"
+
         data = json.loads(json_str)
 
         impressions = data["ecommerce"]["impressions"]
@@ -47,7 +51,6 @@ def get_price(hotel_config, arrive, departure):
                 continue
             if "reggeli" in nev and "vacsor" not in nev:
                 continue
-            # ha semmi kizáró nincs, akkor elfogadható a csomag
             ar = csomag.get("price")
             if isinstance(ar, (int, float)):
                 arak.append(ar)
