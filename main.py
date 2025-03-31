@@ -25,7 +25,12 @@ def get_price():
 
     engine = hotel.get("engine")
     if engine == "resnweb":
-        return resnweb.get_price(hotel, arrive, departure)
+        with open("resnweb.json", encoding="utf-8") as f:
+            resnweb_hotels = json.load(f)
+        resnweb_hotel = next((h for h in resnweb_hotels if h["name"] == hotel_nev), None)
+        if not resnweb_hotel:
+            return "A szálloda nem található a resnweb konfigurációban."
+        return resnweb.get_price(resnweb_hotel, arrive, departure)
     else:
         return "Nem támogatott foglalómotor: " + engine
 
