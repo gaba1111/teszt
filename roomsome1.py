@@ -7,7 +7,7 @@ from json import JSONDecoder
 def get_price(hotel_config, arrive, departure):
     base_url = hotel_config["url"].rstrip("/")
     post_url = f"https://api.webscrapingapi.com/v2?api_key=iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn&url={base_url}%2Fkereses"
-    get_url = f"https://api.webscrapingapi.com/v2?api_key=iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn&url={base_url}%2Fszobavalasztas"
+    get_url = f"https://calimbrawellnesshotel.hu/online-foglalas/szobavalasztas"
 
     session = Session()
 
