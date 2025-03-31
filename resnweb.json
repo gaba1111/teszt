@@ -92,7 +92,7 @@
     "requests": [
       {
         "method": "GET",
-        "url": "https://booking.bambara.hu/hotels/bambara/iframe=1;lang=hu;ca_currency=HUF;iframe_key=128"
+        "url": "https://booking.bambara.hu/hotels/bambara/"
       },
       {
         "method": "POST",
