@@ -1,6 +1,6 @@
 [
   {
-    "name": "Hotel Essence",
+    "name": "Essence Hotel",
     "engine": "resnweb",
     "requests": [
       {
@@ -29,7 +29,7 @@
     ]
   },
   {
-    "name": "Aquaworld Resort",
+    "name": "Aquaworld Hotel",
     "engine": "resnweb",
     "requests": [
       {
