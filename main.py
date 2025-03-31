@@ -3,6 +3,7 @@ from flask_cors import CORS
 import json
 import os
 import resnweb
+import roomsome1
 
 app = Flask(__name__)
 CORS(app)
@@ -35,6 +36,8 @@ def get_price():
 
     if engine == "resnweb":
         return resnweb.get_price(engine_hotel, arrive, departure)
+    elif engine == "roomsome1":
+        return roomsome1.get_price(engine_hotel, arrive, departure)
     else:
         return f"Nem támogatott foglalómotor: {engine}"
 
