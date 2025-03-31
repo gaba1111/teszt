@@ -38,8 +38,7 @@ def get_price(hotel_config, arrive, departure):
         json_str = text[start_index:end_index + 3]  # +3 to include ]}}
 
         # Debug: adjuk vissza a kivágott JSON szöveget teljes egészében
-        return f"Kivágott JSON:
-{json_str}"
+        return f"Kivágott JSON:\n{json_str}"
 
     except Exception as e:
         return f"Hiba történt a válasz feldolgozása közben: {e}"
