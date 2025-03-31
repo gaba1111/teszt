@@ -7,7 +7,6 @@ HEADERS = {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
     'accept-language': 'hu-HU,hu;q=0.9',
     'priority': 'u=0, i',
-    'cookie': '',
     'sec-ch-ua': '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"macOS"',
@@ -101,8 +100,8 @@ def get_price(hotel_config, arrive, departure):
                 price_type = csomag.get("priceType")
                 price_index = csomag.get("priceIndex")
                 talalatok.append((price_type, price_index))
-    except Exception:
-        return "Nem sikerült feldolgozni a 'packages' részt."
+    except Exception as e:
+        return f"Nem sikerült feldolgozni a 'packages' részt. Hiba: {e} — Részlet: {packages_slice[:300]}"
 
     # REQUEST 4 - POST
     ar_list = []
