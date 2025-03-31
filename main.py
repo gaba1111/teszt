@@ -1,8 +1,8 @@
 from flask import Flask, request
 from flask_cors import CORS
 import json
-import resnweb
 import os
+import resnweb
 
 app = Flask(__name__)
 CORS(app)
@@ -10,14 +10,17 @@ CORS(app)
 @app.route("/", methods=["GET", "POST"])
 def get_price():
     if request.method == "GET":
-        return "Használj POST kérést a szálloda és dátumok megadásához."
+        return "Használj POST kérést a szálloda, motor és dátumok megadásához."
 
     adatok = request.get_json()
     hotel_nev = adatok.get("hotel")
+    engine = adatok.get("engine")
     arrive = adatok.get("arrive")
     departure = adatok.get("departure")
 
-    engine = hotel.get("engine")
+    if not hotel_nev or not engine:
+        return "Hiányzó szálloda vagy motor típus."
+
     json_file = f"{engine}.json"
 
     if not os.path.exists(json_file):
@@ -32,12 +35,9 @@ def get_price():
 
     if engine == "resnweb":
         return resnweb.get_price(engine_hotel, arrive, departure)
-    elif engine == "roomsome":
-        return roomsome.get_price(engine_hotel, arrive, departure)
     else:
         return f"Nem támogatott foglalómotor: {engine}"
 
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
