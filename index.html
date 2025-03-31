@@ -3,58 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Szállodai árlekérdezés</title>
+  <title>Árlekérdezés</title>
 </head>
 <body>
-  <h1>Legjobb ár lekérdezése</h1>
+  <h1>Szállodai árlekérdezés</h1>
+  <form id="arForm">
+    <label for="hotel">Szálloda:</label>
+    <select id="hotel" name="hotel">
+      <option value="Essence Hotel|resnweb">Essence Hotel</option>
+      <option value="Aquaworld Hotel|resnweb">Aquaworld Hotel</option>
+      <option value="Balneo Hotel|resnweb">Balneo Hotel</option>
+      <option value="Bambara Hotel|resnweb">Bambara Hotel</option>
+      <option value="Divinus Hotel|resnweb">Divinus Hotel</option>
+      <option value="Hotel Azúr|resnweb">Hotel Azúr</option>
+      <option value="Hotel Silvanus|resnweb">Hotel Silvanus</option>
+      <option value="Lifestyle Mátra|resnweb">Lifestyle Mátra</option>
+      <option value="Termal Hotel Visegrád|resnweb">Termal Hotel Visegrád</option>
+      <option value="Velence Resort|resnweb">Velence Resort</option>
+    </select>
 
-  <label for="hotel">Válassz szállodát:</label>
-  <select id="hotel">
-    <option value="Aquaworld Resort|resnweb">Aquaworld Resort</option>
-    <option value="Balneo Hotel|resnweb">Balneo Hotel</option>
-    <option value="Bambara Hotel|resnweb">Bambara Hotel</option>
-    <option value="Divinus Hotel|resnweb">Divinus Hotel</option>
-    <option value="Hotel Azúr|resnweb">Hotel Azúr</option>
-    <option value="Hotel Essence|resnweb">Hotel Essence</option>
-    <option value="Hotel Silvanus|resnweb">Hotel Silvanus</option>
-    <option value="Lifestyle Mátra|resnweb">Lifestyle Mátra</option>
-    <option value="Ózon Hotel|resnweb">Ózon Hotel</option>
-    <option value="Termal Hotel Visegrád|resnweb">Termal Hotel Visegrád</option>
-    <option value="Velence Resort|resnweb">Velence Resort</option>
-  </select>
+    <br><br>
+    <label for="arrive">Érkezés dátuma:</label>
+    <input type="date" id="arrive" name="arrive" required>
 
-  <br><br>
+    <br><br>
+    <label for="departure">Távozás dátuma:</label>
+    <input type="date" id="departure" name="departure" required>
 
-  <label for="arrive">Érkezés dátuma:</label>
-  <input type="date" id="arrive">
+    <br><br>
+    <button type="submit" id="submitBtn">Ár lekérdezése</button>
+  </form>
 
-  <label for="departure">Távozás dátuma:</label>
-  <input type="date" id="departure">
-
-  <br><br>
-
-  <button onclick="getPrice()">Ár lekérdezése</button>
-
-  <p id="result"></p>
+  <p id="valasz"></p>
 
   <script>
-    async function getPrice() {
-      const selected = document.getElementById("hotel").value;
-      const [hotel, engine] = selected.split("|");
+    const form = document.getElementById("arForm");
+    const valasz = document.getElementById("valasz");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      valasz.textContent = ""; // 1. Előző válasz törlése
+      submitBtn.disabled = true; // 2. Gomb inaktiválása
+      submitBtn.textContent = "Kérlek várj...";
+
+      const [hotel, engine] = document.getElementById("hotel").value.split("|");
       const arrive = document.getElementById("arrive").value;
       const departure = document.getElementById("departure").value;
 
-      const response = await fetch("https://hotel-ar-backend.onrender.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ hotel, engine, arrive, departure })
-      });
+      try {
+        const response = await fetch("https://hotel-ar-backend.onrender.com/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ hotel, engine, arrive, departure })
+        });
 
-      const text = await response.text();
-      document.getElementById("result").innerText = text;
-    }
+        const text = await response.text();
+        valasz.textContent = text;
+      } catch (err) {
+        valasz.textContent = "Hiba történt: " + err.message;
+      } finally {
+        submitBtn.disabled = false; // újra aktiválás
+        submitBtn.textContent = "Ár lekérdezése";
+      }
+    });
+
+    // 3. Automatikus távozási dátum 1 nappal később
+    const arriveInput = document.getElementById("arrive");
+    const departureInput = document.getElementById("departure");
+
+    arriveInput.addEventListener("change", () => {
+      const arriveDate = new Date(arriveInput.value);
+      if (isNaN(arriveDate)) return;
+      const nextDay = new Date(arriveDate);
+      nextDay.setDate(nextDay.getDate() + 1);
+      const yyyy = nextDay.getFullYear();
+      const mm = String(nextDay.getMonth() + 1).padStart(2, '0');
+      const dd = String(nextDay.getDate()).padStart(2, '0');
+      const nextDateStr = `${yyyy}-${mm}-${dd}`;
+      departureInput.value = nextDateStr;
+      departureInput.min = nextDateStr;
+    });
   </script>
 </body>
 </html>
