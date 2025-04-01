@@ -44,6 +44,7 @@ def get_price(hotel_config, arrive, departure):
         return f"A kérés sikertelen volt. HTTP státuszkód: {response.status_code}"
 
     text = response.text
+
     start_marker = '{"ecommerce":{"'
     end_marker = ']}});dataLayer.push'
 
@@ -53,7 +54,7 @@ def get_price(hotel_config, arrive, departure):
     try:
         start_index = text.find(start_marker)
         end_index = text.find(end_marker) + 3
-        json_str = text[start_index:end_index + 1]
+        json_str = text[start_index:end_index]
         data = json.loads(json_str)
 
         impressions = data["ecommerce"]["impressions"]
