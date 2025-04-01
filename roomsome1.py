@@ -1,33 +1,41 @@
-import json
-import re
-from requests import Session
-from json import JSONDecoder
+import requests
 from urllib.parse import quote
 
-def get_price(hotel_config, arrive, departure):
-    base_url = hotel_config["url"]
-    session = Session()
+# Alapadatok
+scraperapi_key = "c401c39c3f0f84264c25fb763591324f"
+real_url = "https://calimbrawellnesshotel.hu/online-foglalas/kereses"
+encoded_url = quote(real_url, safe="")
+full_url = f"https://api.scraperapi.com?api_key={scraperapi_key}&url={encoded_url}"
 
-    # --- Első request (POST) ---
-    payload = {
-        "room_persons[0][adult]": "2",
-        "room_persons[0][child]": "2",
-        "room_persons[0][child_ages][0]": "6",
-        "room_persons[0][child_ages][1]": "10",
-        "arrival": arrive,
-        "departure": departure,
-        "rooms": "1",
-        "lang": "hu",
-        "subpage_num": "1",
-        "subpage_num_next": "2"
-    }
+# Payload
+payload = {
+    "room_persons[0][adult]": "2",
+    "room_persons[0][child]": "2",
+    "room_persons[0][child_ages][0]": "6",
+    "room_persons[0][child_ages][1]": "10",
+    "arrival": "2025-04-18",
+    "departure": "2025-04-22",
+    "rooms": "1",
+    "lang": "hu",
+    "subpage_num": "1",
+    "subpage_num_next": "2"
+}
 
-    scraperapi_key = "iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn"
-    post_url = f"{base_url}kereses"
-    encoded_post_url = quote(post_url, safe="")
-    full_post_url = f"https://api.webscrapingapi.com/v2?api_key={scraperapi_key}&url={encoded_post_url}"
+# Kérés
+session = requests.Session()
+response = session.post(full_url, data=payload, allow_redirects=False)
 
-    response_post = session.post(full_post_url, data=payload)
+print(f"\nHTTP status: {response.status_code}\n")
 
-    # Debug: Írjuk ki a teljes fejlécet
-    return f"Fejlécek: {dict(response_post.headers)}"
+# Headers kiírása
+print("=== RESPONSE HEADERS ===")
+for k, v in response.headers.items():
+    print(f"{k}: {v}")
+
+# Cookie-k ellenőrzése
+print("\n=== COOKIE HEADER ===")
+cookie_header = response.headers.get("Set-Cookie")
+if cookie_header:
+    print(cookie_header)
+else:
+    print("Nincs Set-Cookie header.")
