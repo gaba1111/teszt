@@ -1,34 +1,50 @@
 [
   {
     "name": "Calimbra Wellness Hotel",
-    "url": "https://calimbrawellnesshotel.hu/online-foglalas/"
+    "url": "https://calimbrawellnesshotel.hu/online-foglalas/kereses",
+    "origin": "https://calimbrawellnesshotel.hu",
+    "referer": "https://calimbrawellnesshotel.hu/online-foglalas/kereses"
   },
   {
     "name": "Grand Hotel Esztergom",
-    "url": "https://grandhotesztergom.hu/online-foglalas/"
+    "url": "https://grandhotesztergom.hu/online-foglalas/kereses",
+    "origin": "https://grandhotesztergom.hu",
+    "referer": "https://grandhotesztergom.hu/online-foglalas/kereses"
   },
   {
     "name": "Hotel Caramell",
-    "url": "https://booking.caramell.hu/online-foglalas/"
+    "url": "https://booking.caramell.hu/online-foglalas/kereses",
+    "origin": "https://booking.caramell.hu",
+    "referer": "https://booking.caramell.hu/online-foglalas/kereses"
   },
   {
     "name": "Hotel Kapitány Sümeg",
-    "url": "https://hotelkapitany.hu/online-foglalas/"
+    "url": "https://hotelkapitany.hu/online-foglalas/kereses",
+    "origin": "https://hotelkapitany.hu",
+    "referer": "https://hotelkapitany.hu/online-foglalas/kereses"
   },
   {
     "name": "Hotel MenDan",
-    "url": "https://wellnesshotelmendan.hu/online-foglalas/"
+    "url": "https://wellnesshotelmendan.hu/online-foglalas/kereses",
+    "origin": "https://wellnesshotelmendan.hu",
+    "referer": "https://wellnesshotelmendan.hu/online-foglalas/kereses"
   },
   {
     "name": "Hotel Silver",
-    "url": "https://hotelsilver.hu/online-foglalas/"
+    "url": "https://hotelsilver.hu/online-foglalas/kereses",
+    "origin": "https://hotelsilver.hu",
+    "referer": "https://hotelsilver.hu/online-foglalas/kereses"
   },
   {
     "name": "Thermal Hotel Balance",
-    "url": "https://booking.balanceresort.hu/online-foglalas/"
+    "url": "https://booking.balanceresort.hu/online-foglalas/kereses",
+    "origin": "https://booking.balanceresort.hu",
+    "referer": "https://booking.balanceresort.hu/online-foglalas/kereses"
   },
   {
     "name": "Wellness Hotel Gyula",
-    "url": "https://wellnesshotelgyula.hu/online-foglalas/"
+    "url": "https://wellnesshotelgyula.hu/online-foglalas/kereses",
+    "origin": "https://wellnesshotelgyula.hu",
+    "referer": "https://wellnesshotelgyula.hu/online-foglalas/kereses"
   }
 ]
