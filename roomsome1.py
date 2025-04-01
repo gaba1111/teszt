@@ -1,11 +1,10 @@
-import json
-from requests import Session
+import re
+import requests
 from urllib.parse import quote
-
 
 def get_price(hotel_config, arrive, departure):
     base_url = hotel_config["url"]
-    session = Session()
+    scraperapi_key = "iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn"
 
     # --- Első request (POST) ---
     payload = {
@@ -21,36 +20,35 @@ def get_price(hotel_config, arrive, departure):
         "subpage_num_next": "2"
     }
 
-    scraperapi_key = "iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn"
-    post_url = f"{base_url}kereses"
+    post_url = base_url + "kereses"
     encoded_post_url = quote(post_url, safe="")
     full_post_url = f"https://api.webscrapingapi.com/v2?api_key={scraperapi_key}&url={encoded_post_url}"
 
-    response_post = session.post(full_post_url, data=payload, allow_redirects=False)
+    response_post = requests.post(full_post_url, data=payload)
 
     if response_post.status_code != 200:
-        return f"Az első POST kérés sikertelen volt. HTTP státuszkód: {response_post.status_code}"
+        return f"❌ Az első POST kérés sikertelen volt. HTTP státuszkód: {response_post.status_code}"
 
-    # Cookie kinyerése (PHPSESSID=...)
-    set_cookie = response_post.headers.get("Set-Cookie", "")
-    phpsessid = ""
-    for part in set_cookie.split(";"):
-        if part.strip().startswith("PHPSESSID"):
-            phpsessid = part.strip()
-            break
-
+    # --- Cookie-k kinyerése az objektumból ---
+    cookies_dict = response_post.cookies.get_dict()
+    phpsessid = cookies_dict.get("PHPSESSID")
     if not phpsessid:
-        return "Nem sikerült kinyerni a PHPSESSID értéket."
+        return f"❌ Nem található PHPSESSID a cookie-k között. Cookie-k: {cookies_dict}"
+
+    cookie_header = f"PHPSESSID={phpsessid}"
 
     # --- Második request (GET) ---
-    get_url = f"{base_url}szobavalasztas"
+    get_url = base_url + "szobavalasztas"
     encoded_get_url = quote(get_url, safe="")
     full_get_url = f"https://api.webscrapingapi.com/v2?api_key={scraperapi_key}&url={encoded_get_url}"
 
-    headers = {"Cookie": phpsessid}
-    response_get = session.get(full_get_url, headers=headers)
+    headers = {
+        "Cookie": cookie_header
+    }
+
+    response_get = requests.get(full_get_url, headers=headers)
 
     if response_get.status_code != 200:
-        return f"A GET kérés sikertelen volt. HTTP státuszkód: {response_get.status_code}"
+        return f"❌ A GET kérés sikertelen volt. HTTP státuszkód: {response_get.status_code}"
 
-    return response_get.text[:1000]
+    return f"✅ GET válasz első 1000 karaktere:\n{response_get.text[:1000]}"
