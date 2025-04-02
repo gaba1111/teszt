@@ -35,7 +35,6 @@ def get_price(hotel_config, arrival, departure):
                 "Referer": "https://www.hunguesthotels.hu/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/"
             }
             res1 = session.get(url_get_1, headers=headers_1)
-            print(f"GET 1 ({roomcode}):", res1.status_code)
             time.sleep(4)
 
             # 2. POST – SAVE_TIMES adatmentés
@@ -50,7 +49,6 @@ def get_price(hotel_config, arrival, departure):
                 "v8": "/_sys/_ele/100/save_data"
             }
             res2 = session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data2, headers={"Referer": url_get_1})
-            print(f"POST SAVE_TIMES ({roomcode}):", res2.status_code)
             time.sleep(4)
 
             # 3. POST – GET_ROOM adatlekérés
@@ -65,7 +63,6 @@ def get_price(hotel_config, arrival, departure):
                 "v8": "/_sys/_ele/100/roomselection"
             }
             res3 = session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data3, headers={"Referer": url_get_1})
-            print(f"POST GET_ROOM ({roomcode}):", res3.status_code)
             time.sleep(4)
 
             # 4. POST – SAVE_ROOMS lekérés
@@ -81,13 +78,11 @@ def get_price(hotel_config, arrival, departure):
                 "v8": "/_sys/_ele/100/save_data"
             }
             res4 = session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data4, headers={"Referer": url_get_1})
-            print(f"POST SAVE_ROOMS ({roomcode}):", res4.status_code)
             time.sleep(4)
 
             # 5. GET kérés – az ajánlatok betöltése
             res5 = session.get(url_offers)
-            print(f"GET OFFERS ({roomcode}):", res5.status_code)
-
+            
             # Árak kinyerése reguláris kifejezéssel
             pattern = r'(?<=data-price=")[^\"]+(?=")'
             prices = re.findall(pattern, res5.text)
@@ -95,26 +90,21 @@ def get_price(hotel_config, arrival, departure):
             # Ha van ár, a legkisebb értéket visszaadjuk
             if prices:
                 numeric_prices = [int(p.replace(" ", "").replace("\u202f", "").replace(",", "")) for p in prices]
-                print(f"\n✨ Legolcsóbb ár ({roomcode}):", min(numeric_prices), "Ft")
                 return min(numeric_prices)
             else:
-                print(f"\n❌ Nem található ár ({roomcode}).")
                 return None
 
         except Exception as e:
-            print(f"\n⚠️ Hiba ({roomcode}):", str(e))
-            return None
+                return None
 
     # Sorban végigpróbáljuk a szobakódokat, amíg nem találunk érvényes árat
     for idx, code in enumerate(roomcodes):
-        print(f"\n🆔 Próbálkozás szobakóddal: {code}")
-        result = send_requests_for_roomcode(code)
+            result = send_requests_for_roomcode(code)
         if result is not None:
             return result
         # Ha nem ez volt az utolsó szobakód, várunk 4–6 másodpercet a következő próbálkozásig
         if idx < len(roomcodes) - 1:
             delay = random.randint(4, 6)
-            print(f"⏳ Várakozás {delay} másodpercet a következő próbálkozás előtt...")
             time.sleep(delay)
 
     return "Nem található ár egyik szobakódra sem."
