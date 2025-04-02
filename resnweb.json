@@ -173,6 +173,35 @@
       }
     ]
   },
+  {
+    "name": "Hotel Azúr Premium",
+    "engine": "resnweb",
+    "requests": [
+      {
+        "method": "GET",
+        "url": "https://api.webscrapingapi.com/v2?api_key=iUAAEXdV5IFUa5v0HRtZtz52YiBg7sDn&url=https%3A%2F%2Fnethotelbooking.net%2Fhotels%2Fhotelazurpremium%2F"
+      },
+      {
+        "method": "POST",
+        "url": "https://hotelazurpremium.nethotelbooking.net/ajax/booking/index",
+        "params": {
+          "method[params][target_origin]": "https://hotelazurpremium.hu/",
+          "method[params][hotelID]": "486"
+        }
+      },
+      {
+        "method": "GET",
+        "url_template": "https://booking.hotelazurpremium.hu/hotels/hotelazurpremium/page=booking;roomNumber=0;sid={sid}"
+      },
+      {
+        "method": "POST",
+        "url": "https://hotelazur.nethotelbooking.net/ajax/booking/booking",
+        "params": {
+          "method[params][hotelID]": "486"
+        }
+      }
+    ]
+  },
    {
     "name": "Hotel Silvanus",
     "engine": "resnweb",
