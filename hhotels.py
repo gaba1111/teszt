@@ -12,6 +12,8 @@ def get_price(hotel_config, arrival, departure):
     hotelcode = hotel_config["hotelcode"]
     url_get_1 = hotel_config["url_get_1"]
     url_offers = hotel_config["url_offers"]
+    path = hotel_config["path"]
+    referer = hotel_config["referer"]
 
     # Kiszámoljuk a tartózkodás hosszát (éjszakák száma)
     date_format = "%Y-%m-%d"
@@ -29,10 +31,10 @@ def get_price(hotel_config, arrival, departure):
             # 1. GET kérés – első oldal betöltése, fontos a sütik miatt
             headers_1 = {
                 "authority": "www.hunguesthotels.hu",
-                "path": "/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/szobafoglalas/",
+                "path": path,
                 "scheme": "https",
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*",
-                "Referer": "https://www.hunguesthotels.hu/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/"
+                "Referer": referer
             }
             res1 = session.get(url_get_1, headers=headers_1)
             time.sleep(4)
@@ -82,7 +84,7 @@ def get_price(hotel_config, arrival, departure):
 
             # 5. GET kérés – az ajánlatok betöltése
             res5 = session.get(url_offers)
-            
+
             # Árak kinyerése reguláris kifejezéssel
             pattern = r'(?<=data-price=")[^\"]+(?=")'
             prices = re.findall(pattern, res5.text)
@@ -94,8 +96,8 @@ def get_price(hotel_config, arrival, departure):
             else:
                 return None
 
-        except Exception as e:
-                return None
+        except Exception:
+            return None
 
     # Sorban végigpróbáljuk a szobakódokat, amíg nem találunk érvényes árat
     for idx, code in enumerate(roomcodes):
