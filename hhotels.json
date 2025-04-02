@@ -4,6 +4,13 @@
     "hotelcode": "4",
     "url_get_1": "https://www.hunguesthotels.hu/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/szobafoglalas/",
     "url_offers": "https://www.hunguesthotels.hu/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/szobafoglalas/?offers",
-    "roomcodes": ["657", "667", "658"]
+    "path": "/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/szobafoglalas/",
+    "referer": "https://www.hunguesthotels.hu/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/",
+    "roomcodes": [
+      "657",
+      "667",
+      "658"
+    ]
   }
 ]
+
