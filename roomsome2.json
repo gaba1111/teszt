@@ -3,5 +3,35 @@
     "name": "Hotel Európa Fit",
     "post_url": "https://book.europafit.hu/api/roomsome/store-calendar-data/hu",
     "base_url": "https://book.europafit.hu"
+  },
+  {
+    "name": "Gotthard Therme",
+    "post_url": "https://gotthard.book.accenthotels.com/api/roomsome/store-calendar-data/hu",
+    "base_url": "https://gotthard.book.accenthotels.com/"
+  },
+  {
+    "name": "Greenfield Hotel",
+    "post_url": "https://greenfield.book.adventorhotels.hu/api/roomsome/store-calendar-data/hu",
+    "base_url": "https://greenfield.book.adventorhotels.hu/"
+  },
+  {
+    "name": "Hotel Avalon Park",
+    "post_url": "https://book.avalonresort.hu/api/roomsome/store-calendar-data/hu",
+    "base_url": "https://book.avalonresort.hu"
+  },
+  {
+    "name": "Hotel Karos Spa",
+    "post_url": "https://book.karos-spa.hu/api/roomsome/store-calendar-data/hu",
+    "base_url": "https://book.karos-spa.hu"
+  },
+  {
+    "name": "Kolping Hotel",
+    "post_url": "https://book.kolping.hotel.hu/api/roomsome/store-calendar-data/hu",
+    "base_url": "https://book.kolping.hotel.hu"
+  },
+  {
+    "name": "NaturMed Carbona",
+    "post_url": "https://book.carbona.hu/api/roomsome/store-calendar-data/hu",
+    "base_url": "https://book.carbona.hu"
   }
 ]
