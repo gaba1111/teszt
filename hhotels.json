@@ -11,6 +11,56 @@
       "667",
       "658"
     ]
+  },
+  {
+    "name": "HH Gyula",
+    "hotelcode": "6",
+    "url_get_1": "https://www.hunguesthotels.hu/hu/hotel/gyula/hunguest-hotel-gyula/szobafoglalas/",
+    "url_offers": "https://www.hunguesthotels.hu/hu/hotel/gyula/hunguest-hotel-gyula/szobafoglalas/?offers",
+    "path": "/hu/hotel/gyula/hunguest-hotel-gyula/hunguest_hotel_gyula/szobafoglalas/",
+    "referer": "https://www.hunguesthotels.hu/hu/hotel/gyula/hunguest-hotel-gyula/hunguest_hotel_gyula/",
+    "roomcodes": [
+      "635",
+      "634",
+      "438",
+      "435"
+    ]
+  },
+  {
+    "name": "HH Saliris",
+    "hotelcode": "112",
+    "url_get_1": "https://www.hunguesthotels.hu/hu/hotel/egerszalok/hunguest_saliris/szobafoglalas/",
+    "url_offers": "https://www.hunguesthotels.hu/hu/hotel/egerszalok/hunguest_saliris/szobafoglalas/?offers",
+    "path": "/hu/hotel/egerszalok/hunguest_saliris/szobafoglalas/",
+    "referer": "https://www.hunguesthotels.hu/hu/hotel/egerszalok/hunguest_saliris/",
+    "roomcodes": [
+      "590",
+      "587"
+    ]
+  },
+  {
+    "name": "HH Sóstó",
+    "hotelcode": "113",
+    "url_get_1": "https://www.hunguesthotels.hu/hu/hotel/nyiregyhaza/hunguest_hotel_sosto/szobafoglalas/",
+    "url_offers": "https://www.hunguesthotels.hu/hu/hotel/nyiregyhaza/hunguest_hotel_sosto/szobafoglalas/?offers",
+    "path": "/hu/hotel/nyiregyhaza/hunguest_hotel_sosto/hotel_sosto/szobafoglalas/",
+    "referer": "https://www.hunguesthotels.hu/hu/hotel/nyiregyhaza/hunguest_hotel_sosto/hotel_sosto/szobafoglalas/",
+    "roomcodes": [
+      "584",
+      "585"
+    ]
+  },
+  {
+    "name": "HH Szeged",
+    "hotelcode": "8",
+    "url_get_1": "https://www.hunguesthotels.hu/hu/hotel/szeged/hunguest_hotel_szeged/szobafoglalas/",
+    "url_offers": "https://www.hunguesthotels.hu/hu/hotel/szeged/hunguest_hotel_szeged/szobafoglalas/?offers",
+    "path": "/hu/hotel/szeged/hunguest_hotel_szeged/hunguest_hotel_szeged/szobafoglalas/",
+    "referer": "https://www.hunguesthotels.hu/hu/hotel/szeged/hunguest_hotel_szeged/hotel_szeged/",
+    "roomcodes": [
+      "299",
+      "302"
+    ]
   }
 ]
 
