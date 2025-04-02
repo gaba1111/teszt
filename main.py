@@ -39,6 +39,8 @@ def get_price():
         return resnweb.get_price(engine_hotel, arrive, departure)
     elif engine == "roomsome1":
         return roomsome1.get_price(engine_hotel, arrive, departure)
+    elif engine == "roomsome2":
+        return roomsome2.get_price(engine_hotel, arrive, departure)
     else:
         return f"Nem támogatott foglalómotor: {engine}"
 
