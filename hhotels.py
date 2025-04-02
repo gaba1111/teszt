@@ -37,7 +37,7 @@ def get_price(hotel_config, arrival, departure):
                 "Referer": referer
             }
             res1 = session.get(url_get_1, headers=headers_1)
-            time.sleep(4)
+            time.sleep(2)
 
             # 2. POST – SAVE_TIMES adatmentés
             data2 = {
@@ -51,7 +51,7 @@ def get_price(hotel_config, arrival, departure):
                 "v8": "/_sys/_ele/100/save_data"
             }
             res2 = session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data2, headers={"Referer": url_get_1})
-            time.sleep(4)
+            time.sleep(2)
 
             # 3. POST – GET_ROOM adatlekérés
             data3 = {
@@ -65,7 +65,7 @@ def get_price(hotel_config, arrival, departure):
                 "v8": "/_sys/_ele/100/roomselection"
             }
             res3 = session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data3, headers={"Referer": url_get_1})
-            time.sleep(4)
+            time.sleep(2)
 
             # 4. POST – SAVE_ROOMS lekérés
             v2_rooms = f"{roomcode}<->2f2g<->6_10_0_0_0_0<->{roomcode}_2_6_10_0_0_0_0<->0<->0<->0<->0<->0<->1"
@@ -80,7 +80,7 @@ def get_price(hotel_config, arrival, departure):
                 "v8": "/_sys/_ele/100/save_data"
             }
             res4 = session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data4, headers={"Referer": url_get_1})
-            time.sleep(4)
+            time.sleep(2)
 
             # 5. GET kérés – az ajánlatok betöltése
             res5 = session.get(url_offers)
