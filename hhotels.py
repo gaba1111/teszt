@@ -99,7 +99,7 @@ def get_price(hotel_config, arrival, departure):
 
     # Sorban végigpróbáljuk a szobakódokat, amíg nem találunk érvényes árat
     for idx, code in enumerate(roomcodes):
-            result = send_requests_for_roomcode(code)
+        result = send_requests_for_roomcode(code)
         if result is not None:
             return result
         # Ha nem ez volt az utolsó szobakód, várunk 4–6 másodpercet a következő próbálkozásig
