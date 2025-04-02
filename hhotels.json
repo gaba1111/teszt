@@ -1,12 +1,9 @@
-{
-  "HH Béke": {
+[
+  {
+    "name": "HH Béke",
     "hotelcode": "4",
-    "url_get_1": "https://www.hunguesthotels.hu/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/szobafoglalas/",
-    "url_offers": "https://www.hunguesthotels.hu/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/szobafoglalas/?offers",
-    "roomcodes": [
-      "657",
-      "667",
-      "658"
-    ]
+    "url_get_1": "...",
+    "url_offers": "...",
+    "roomcodes": ["657", "667", "658"]
   }
-}
+]
