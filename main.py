@@ -5,6 +5,7 @@ import os
 import resnweb
 import roomsome1
 import roomsome2
+import hhotels
 
 app = Flask(__name__)
 CORS(app)
@@ -41,6 +42,8 @@ def get_price():
         return roomsome1.get_price(engine_hotel, arrive, departure)
     elif engine == "roomsome2":
         return roomsome2.get_price(engine_hotel, arrive, departure)
+    elif engine == "hhotels":
+        return hhotels.get_price(engine_hotel, arrive, departure)
     else:
         return f"Nem támogatott foglalómotor: {engine}"
 
