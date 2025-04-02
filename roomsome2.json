@@ -33,5 +33,10 @@
     "name": "NaturMed Carbona",
     "post_url": "https://book.carbona.hu/api/roomsome/store-calendar-data/hu",
     "base_url": "https://book.carbona.hu"
+  },
+  {
+    "name": "Hotel Atlantis",
+    "post_url": "https://book.hotelatlantis.hu/api/roomsome/store-calendar-data/hu",
+    "base_url": "https://book.hotelatlantis.hu"
   }
 ]
