@@ -42,6 +42,12 @@
     "referer": "https://booking.balanceresort.hu/online-foglalas/kereses"
   },
   {
+    "name": "Hotel Aurum Family",
+    "url": "https://hotelaurumfamily.hu/online-foglalas/kereses",
+    "origin": "https://hotelaurumfamily.hu",
+    "referer": "https://hotelaurumfamily.hu/online-foglalas/kereses"
+  },
+  {
     "name": "Wellness Hotel Gyula",
     "url": "https://wellnesshotelgyula.hu/online-foglalas/kereses",
     "origin": "https://wellnesshotelgyula.hu",
