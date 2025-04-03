@@ -13,6 +13,20 @@
     ]
   },
   {
+    "name": "HH Freya",
+    "hotelcode": "10",
+    "url_get_1": "https://www.hunguesthotels.hu/hu/hotel/zalakaros/hunguest_hotel_freya/szobafoglalas/",
+    "url_offers": "https://www.hunguesthotels.hu/hu/hotel/zalakaros/hunguest_hotel_freya/szobafoglalas/?offers",
+    "path": "/hu/hotel/zalakaros/hunguest_hotel_freya/szobafoglalas/",
+    "referer": "https://www.hunguesthotels.hu/hu/hotel/zalakaros/hunguest_hotel_freya/",
+    "roomcodes": [
+      "250",
+      "575",
+      "574",
+      "576"
+    ]
+  },
+  {
     "name": "HH Gyula",
     "hotelcode": "6",
     "url_get_1": "https://www.hunguesthotels.hu/hu/hotel/gyula/hunguest-hotel-gyula/szobafoglalas/",
