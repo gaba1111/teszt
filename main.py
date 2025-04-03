@@ -44,6 +44,8 @@ def get_price():
         return roomsome2.get_price(engine_hotel, arrive, departure)
     elif engine == "hhotels":
         return hhotels.get_price(engine_hotel, arrive, departure)
+    elif engine == "optimus":
+        return optimus.get_price(arrive, departure)
     else:
         return f"Nem támogatott foglalómotor: {engine}"
 
