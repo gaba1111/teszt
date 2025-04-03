@@ -30,6 +30,11 @@
     "base_url": "https://book.karos-spa.hu"
   },
   {
+    "name": "Kehida Termál Hotel",
+    "post_url": "https://book.kehidatermal.hu/api/roomsome/store-calendar-data/hu",
+    "base_url": "https://book.kehidatermal.hu"
+  },
+  {
     "name": "Kolping Hotel",
     "post_url": "https://book.kolping.hotel.hu/api/roomsome/store-calendar-data/hu",
     "base_url": "https://book.kolping.hotel.hu"
