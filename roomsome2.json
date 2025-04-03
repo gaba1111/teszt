@@ -5,6 +5,11 @@
     "base_url": "https://book.europafit.hu"
   },
   {
+    "name": "Barack Thermal Resort",
+    "post_url": "https://book.barackresort.hu/api/roomsome/store-calendar-data/hu",
+    "base_url": "https://book.barackresort.hu"
+  },
+  {
     "name": "Gotthard Therme",
     "post_url": "https://gotthard.book.accenthotels.com/api/roomsome/store-calendar-data/hu",
     "base_url": "https://gotthard.book.accenthotels.com/"
