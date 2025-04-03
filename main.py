@@ -6,6 +6,7 @@ import resnweb
 import roomsome1
 import roomsome2
 import hhotels
+import optimus
 
 app = Flask(__name__)
 CORS(app)
