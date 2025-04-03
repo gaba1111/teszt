@@ -29,8 +29,8 @@ def get_price(hotel_config, arrive, departure):
 
     data = {
         'room_persons[0][adult]': '2',
-        #'room_persons[0][child]': '2',
-        #'room_persons[0][child_ages][]': ['6', '10'],
+        'room_persons[0][child]': '2',
+        'room_persons[0][child_ages][]': ['6', '10'],
         'arrival': arrive,
         'departure': departure,
         'rooms': '1',
