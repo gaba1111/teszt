@@ -13,15 +13,15 @@ def get_price(hotel_config, arrive, departure):
 
     data = {
         "Reservation[room_persons][0][adults]": "2",
-        "Reservation[room_persons][0][children_count]": "2",
-        "Reservation[room_persons][0][children][0][age]": "6",
-        "Reservation[room_persons][0][children][1][age]": "10",
+        #"Reservation[room_persons][0][children_count]": "2",
+        #"Reservation[room_persons][0][children][0][age]": "6",
+        #"Reservation[room_persons][0][children][1][age]": "10",
         "Reservation[arrival]": arrive,
         "Reservation[departure]": departure,
         "Reservation[room_count]": "1",
         "Reservation[currency_code]": "HUF",
-        "Reservation[room_persons][0][children][0][baby_bed]": "0",
-        "Reservation[room_persons][0][children][1][baby_bed]": "0"
+        #"Reservation[room_persons][0][children][0][baby_bed]": "0",
+        #"Reservation[room_persons][0][children][1][baby_bed]": "0"
     }
 
     try:
