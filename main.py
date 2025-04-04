@@ -15,14 +15,14 @@ CORS(app)
 def get_price():
     if request.method == "GET":
         return "Használj POST kérést a szálloda, motor és dátumok megadásához."
-
+    
     adatok = request.get_json()
     hotel_nev = adatok.get("hotel")
     engine = adatok.get("engine")
     arrive = adatok.get("arrive")
     departure = adatok.get("departure")
-    adults = data.get("adults", 1)
-    children = data.get("children", [])
+    adults = adatok.get("adults", 1)
+    children = adatok.get("children", [])
 
     if not hotel_nev or not engine:
         return "Hiányzó szálloda vagy motor típus."
