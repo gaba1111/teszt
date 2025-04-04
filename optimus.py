@@ -66,7 +66,7 @@ def get_price(arrival, departure, adults=1, children=[]):
     # Vendégkategóriák beolvasása a JSON fájlból
     with open("optimus.json", "r", encoding="utf-8") as f:
         hotel_data = json.load(f)
-    guest_categories = hotel_data["guest_categories"]
+    guest_categories = hotel_data[0]["guest_categories"]
     guests = calculate_guests(adults, children, guest_categories)
 
     json_data3 = {
