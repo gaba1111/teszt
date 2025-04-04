@@ -6,7 +6,7 @@
   <title>Árlekérdezés</title>
 </head>
 <body>
-  <h1>Szállodai árlekérdezés, 2 felnőtt, 2 gyerek (6 és 10 évesek) félpanzióval</h1>
+  <h1>Szállodai árlekérdezés</h1>
   <form id="arForm">
     <label for="hotel">Szálloda:</label>
     <select id="hotel" name="hotel">
@@ -48,8 +48,6 @@
       <option value="HH Sóstó|hhotels">HH Sóstó Níregyháza</option>
       <option value="HH Szeged|hhotels">HH Szeged</option>
       <option value="Aquaticum Hotel|optimus">Aquaticum Hotel</option>
-     
-
     </select>
 
     <br><br>
@@ -61,6 +59,24 @@
     <input type="date" id="departure" name="departure" required>
 
     <br><br>
+    <div>
+      <label>Felnőttek:</label>
+      <button type="button" id="adultMinus">–</button>
+      <span id="adultCount">1</span>
+      <button type="button" id="adultPlus">+</button>
+    </div>
+
+    <br>
+    <div>
+      <label>Gyerekek:</label>
+      <button type="button" id="childMinus">–</button>
+      <span id="childCount">0</span>
+      <button type="button" id="childPlus">+</button>
+    </div>
+
+    <div id="childrenAgesContainer"></div>
+
+    <br>
     <button type="submit" id="submitBtn">Ár lekérdezése</button>
   </form>
 
@@ -71,21 +87,88 @@
     const valasz = document.getElementById("valasz");
     const submitBtn = document.getElementById("submitBtn");
 
+    const adultCountSpan = document.getElementById("adultCount");
+    const adultMinus = document.getElementById("adultMinus");
+    const adultPlus = document.getElementById("adultPlus");
+
+    const childCountSpan = document.getElementById("childCount");
+    const childMinus = document.getElementById("childMinus");
+    const childPlus = document.getElementById("childPlus");
+    const childrenAgesContainer = document.getElementById("childrenAgesContainer");
+
+    let adultCount = 1;
+    let childCount = 0;
+
+    function updateCounts() {
+      adultCountSpan.textContent = adultCount;
+      childCountSpan.textContent = childCount;
+      updateChildAgeSelectors();
+    }
+
+    function updateChildAgeSelectors() {
+      childrenAgesContainer.innerHTML = "";
+      for (let i = 0; i < childCount; i++) {
+        const label = document.createElement("label");
+        label.textContent = `Gyermek ${i + 1} életkora:`;
+        const select = document.createElement("select");
+        select.name = "childAge";
+        select.required = true;
+        for (let age = 1; age <= 17; age++) {
+          const option = document.createElement("option");
+          option.value = age;
+          option.textContent = age;
+          select.appendChild(option);
+        }
+        childrenAgesContainer.appendChild(label);
+        childrenAgesContainer.appendChild(select);
+        childrenAgesContainer.appendChild(document.createElement("br"));
+      }
+    }
+
+    adultMinus.onclick = () => {
+      if (adultCount > 1) {
+        adultCount--;
+        updateCounts();
+      }
+    };
+    adultPlus.onclick = () => {
+      if (adultCount < 2) {
+        adultCount++;
+        updateCounts();
+      }
+    };
+
+    childMinus.onclick = () => {
+      if (childCount > 0) {
+        childCount--;
+        updateCounts();
+      }
+    };
+    childPlus.onclick = () => {
+      if (childCount < 2) {
+        childCount++;
+        updateCounts();
+      }
+    };
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      valasz.textContent = ""; // 1. Előző válasz törlése
-      submitBtn.disabled = true; // 2. Gomb inaktiválása
+      valasz.textContent = "";
+      submitBtn.disabled = true;
       submitBtn.textContent = "Kérlek várj...";
 
       const [hotel, engine] = document.getElementById("hotel").value.split("|");
       const arrive = document.getElementById("arrive").value;
       const departure = document.getElementById("departure").value;
 
+      const childAgeSelects = document.querySelectorAll("select[name='childAge']");
+      const children = Array.from(childAgeSelects).map(select => parseInt(select.value));
+
       try {
         const response = await fetch("https://hotel-ar-backend.onrender.com/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ hotel, engine, arrive, departure })
+          body: JSON.stringify({ hotel, engine, arrive, departure, adults: adultCount, children })
         });
 
         const text = await response.text();
@@ -93,15 +176,13 @@
       } catch (err) {
         valasz.textContent = "Hiba történt: " + err.message;
       } finally {
-        submitBtn.disabled = false; // újra aktiválás
+        submitBtn.disabled = false;
         submitBtn.textContent = "Ár lekérdezése";
       }
     });
 
-    // 3. Automatikus távozási dátum 1 nappal később
     const arriveInput = document.getElementById("arrive");
     const departureInput = document.getElementById("departure");
-
     arriveInput.addEventListener("change", () => {
       const arriveDate = new Date(arriveInput.value);
       if (isNaN(arriveDate)) return;
@@ -114,6 +195,8 @@
       departureInput.value = nextDateStr;
       departureInput.min = nextDateStr;
     });
+
+    updateCounts();
   </script>
 </body>
 </html>
