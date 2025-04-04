@@ -2,7 +2,21 @@ import requests
 import json
 
 
-def get_price(hotel_config, arrive, departure):
+def calculate_guest_data(adults, children_ages):
+    data = {
+        "Reservation[room_persons][0][adults]": str(adults)
+    }
+
+    if children_ages:
+        data["Reservation[room_persons][0][children_count]"] = str(len(children_ages))
+        for i, age in enumerate(children_ages):
+            data[f"Reservation[room_persons][0][children][{i}][age]"] = str(age)
+            data[f"Reservation[room_persons][0][children][{i}][baby_bed]"] = "0"
+
+    return data
+
+
+def get_price(hotel_config, arrive, departure, adults=2, children=[]):
     post_url = hotel_config["post_url"]
     base_url = hotel_config["base_url"]
 
@@ -11,18 +25,15 @@ def get_price(hotel_config, arrive, departure):
         "User-Agent": "Mozilla/5.0"
     }
 
+    guest_data = calculate_guest_data(adults, children)
+
     data = {
-        "Reservation[room_persons][0][adults]": "2",
-        "Reservation[room_persons][0][children_count]": "2",
-        "Reservation[room_persons][0][children][0][age]": "6",
-        "Reservation[room_persons][0][children][1][age]": "10",
         "Reservation[arrival]": arrive,
         "Reservation[departure]": departure,
         "Reservation[room_count]": "1",
-        "Reservation[currency_code]": "HUF",
-        "Reservation[room_persons][0][children][0][baby_bed]": "0",
-        "Reservation[room_persons][0][children][1][baby_bed]": "0"
+        "Reservation[currency_code]": "HUF"
     }
+    data.update(guest_data)
 
     try:
         response_post = requests.post(post_url, headers=headers_post, data=data)
