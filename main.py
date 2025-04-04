@@ -15,14 +15,14 @@ CORS(app)
 def get_price():
     if request.method == "GET":
         return "Használj POST kérést a szálloda, motor és dátumok megadásához."
-    
+
     adatok = request.get_json()
     hotel_nev = adatok.get("hotel")
     engine = adatok.get("engine")
     arrive = adatok.get("arrive")
     departure = adatok.get("departure")
-    #adults = adatok.get("adults", 1)
-    #children = adatok.get("children", [])
+    adults = adatok.get("adults", 1)
+    children = adatok.get("children", [])
 
     if not hotel_nev or not engine:
         return "Hiányzó szálloda vagy motor típus."
@@ -48,7 +48,7 @@ def get_price():
     elif engine == "hhotels":
         return hhotels.get_price(engine_hotel, arrive, departure)
     elif engine == "optimus":
-        return optimus.get_price(arrive, departure)
+        return optimus.get_price(engine_hotel, arrive, departure, adults, children)
     else:
         return f"Nem támogatott foglalómotor: {engine}"
 
