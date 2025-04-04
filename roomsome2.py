@@ -81,7 +81,7 @@ def get_price(hotel_config, arrive, departure, adults=2, children=[]):
             room_data = calculated_room_models["0"].get("0", {})
             price_ranges = room_data.get("calculatedPriceRangeModels", {})
 
-            kizart_szavak = ["senior", "szenior", "nyugdíjas", "all inclusive", "all inkluzív", "reggelis"]
+            kizart_szavak = ["senior", "szenior", "nyugdíjas", "all inclusive", "all inkluzív", "reggelis", "önellátással", "kemping"]
             arak = []
 
             for csomag in price_ranges.values():
