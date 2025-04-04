@@ -68,7 +68,7 @@ def get_price(hotel_config, arrive, departure, adults=1, children=[]):
     end_marker = ']}});dataLayer.push'
 
     if start_marker not in text or end_marker not in text:
-        return "Nincs szabad szoba vagy nem található a JSON blokk."
+        return "Nincs szabad szoba vagy nem teljesül a minimum éjszakaszám."
 
     try:
         start_index = text.find(start_marker)
