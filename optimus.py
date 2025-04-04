@@ -44,15 +44,20 @@ def get_price(szalloda, erkezes, tavozas, felnottek_szama, gyerekek_eletkora):
         vendeg_adatok = calculate_guest_counts(felnottek_szama, gyerekek_eletkora, szalloda["guest_categories"])
 
         foglalasi_adat = {
-            "checkIn": erkezes,
-            "checkOut": tavozas,
-            "roomCount": 1,
-            "rooms": [
-                {
-                    "guests": vendeg_adatok
-                }
-            ],
-        }
+        'checkIn': arrival,
+        'checkOut': departure,
+        'roomCount': 1,
+        'rooms': [
+            {
+                'guests': [
+                    {"guestId": 4, "count": 2},
+                    {"guestId": 3, "count": 1},
+                    {"guestId": 2, "count": 1},
+                    {"guestId": 1, "count": 0},
+                ]
+            },
+        ],
+    }
 
         fejlecek = {
             "Content-Type": "application/json",
