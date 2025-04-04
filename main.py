@@ -21,6 +21,8 @@ def get_price():
     engine = adatok.get("engine")
     arrive = adatok.get("arrive")
     departure = adatok.get("departure")
+    adults = data.get("adults", 1)
+    children = data.get("children", [])
 
     if not hotel_nev or not engine:
         return "Hiányzó szálloda vagy motor típus."
