@@ -17,48 +17,56 @@
     "name": "Grand Hotel Esztergom",
     "url": "https://grandhotelesztergom.hu/online-foglalas/kereses",
     "origin": "https://grandhotesztergom.hu",
-    "referer": "https://grandhotelesztergom.hu/online-foglalas/kereses"
+    "referer": "https://grandhotelesztergom.hu/online-foglalas/kereses",
+    "children": 11
   },
   {
     "name": "Hotel Caramell",
     "url": "https://booking.caramell.hu/online-foglalas/kereses",
     "origin": "https://booking.caramell.hu",
-    "referer": "https://booking.caramell.hu/online-foglalas/kereses"
+    "referer": "https://booking.caramell.hu/online-foglalas/kereses",
+    "children": 18
   },
   {
     "name": "Hotel Kapitány Sümeg",
     "url": "https://hotelkapitany.hu/online-foglalas/kereses",
     "origin": "https://hotelkapitany.hu",
-    "referer": "https://hotelkapitany.hu/online-foglalas/kereses"
+    "referer": "https://hotelkapitany.hu/online-foglalas/kereses",
+    "children": 17
   },
   {
     "name": "Hotel MenDan",
     "url": "https://wellnesshotelmendan.hu/online-foglalas/kereses",
     "origin": "https://wellnesshotelmendan.hu",
-    "referer": "https://wellnesshotelmendan.hu/online-foglalas/kereses"
+    "referer": "https://wellnesshotelmendan.hu/online-foglalas/kereses",
+    "children": 18
   },
   {
     "name": "Hotel Silver",
     "url": "https://hotelsilver.hu/online-foglalas/kereses",
     "origin": "https://hotelsilver.hu",
-    "referer": "https://hotelsilver.hu/online-foglalas/kereses"
+    "referer": "https://hotelsilver.hu/online-foglalas/kereses",
+    "children": 18
   },
   {
     "name": "Thermal Hotel Balance",
     "url": "https://booking.balanceresort.hu/online-foglalas/kereses",
     "origin": "https://booking.balanceresort.hu",
-    "referer": "https://booking.balanceresort.hu/online-foglalas/kereses"
+    "referer": "https://booking.balanceresort.hu/online-foglalas/kereses",
+    "children": 17
   },
   {
     "name": "Hotel Aurum Family",
     "url": "https://hotelaurumfamily.hu/online-foglalas/kereses",
     "origin": "https://hotelaurumfamily.hu",
-    "referer": "https://hotelaurumfamily.hu/online-foglalas/kereses"
+    "referer": "https://hotelaurumfamily.hu/online-foglalas/kereses",
+    "children": 18
   },
   {
     "name": "Wellness Hotel Gyula",
     "url": "https://wellnesshotelgyula.hu/online-foglalas/kereses",
     "origin": "https://wellnesshotelgyula.hu",
-    "referer": "https://wellnesshotelgyula.hu/online-foglalas/kereses"
+    "referer": "https://wellnesshotelgyula.hu/online-foglalas/kereses",
+    "children": 17
   }
 ]
