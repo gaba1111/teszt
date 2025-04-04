@@ -1,6 +1,10 @@
 import requests
-import json
 import re
+import json
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 
 def calculate_guest_counts(adults, children_ages, guest_categories):
     guest_counts = {entry["guestId"]: 0 for entry in guest_categories}
@@ -28,12 +32,12 @@ def get_price(config, arrival, departure, adults, children):
     session = requests.Session()
 
     try:
-        r1 = session.get("https://foglalas.aquaticum.hu/")
+        r1 = session.get("https://foglalas.aquaticum.hu/", verify=False)
         r1.raise_for_status()
         token_match = re.search(r'"csrfToken":"(.*?)"', r1.text)
         csrf_token = token_match.group(1) if token_match else ""
 
-        r2 = session.get("https://foglalas.aquaticum.hu/api/reservation/hotel/init")
+        r2 = session.get("https://foglalas.aquaticum.hu/api/reservation/hotel/init", verify=False)
         r2.raise_for_status()
         flow_id = r2.json()["data"]["flowId"]
 
@@ -59,10 +63,11 @@ def get_price(config, arrival, departure, adults, children):
             f"https://foglalas.aquaticum.hu/api/reservation/hotel/{flow_id}/rooms",
             json=payload_room,
             headers=headers,
+            verify=False
         )
         r3.raise_for_status()
 
-        r4 = session.get(f"https://foglalas.aquaticum.hu/api/reservation/hotel/{flow_id}/packages")
+        r4 = session.get(f"https://foglalas.aquaticum.hu/api/reservation/hotel/{flow_id}/packages", verify=False)
         r4.raise_for_status()
         packages = r4.json()["data"]
 
@@ -75,10 +80,11 @@ def get_price(config, arrival, departure, adults, children):
             f"https://foglalas.aquaticum.hu/api/reservation/hotel/{flow_id}/package",
             json={"id": selected_package},
             headers=headers,
+            verify=False
         )
         r5.raise_for_status()
 
-        r6 = session.get(f"https://foglalas.aquaticum.hu/api/reservation/hotel/{flow_id}/rooms")
+        r6 = session.get(f"https://foglalas.aquaticum.hu/api/reservation/hotel/{flow_id}/rooms", verify=False)
         r6.raise_for_status()
         rooms_data = r6.json()
 
