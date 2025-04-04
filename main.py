@@ -44,7 +44,7 @@ def get_price():
     elif engine == "roomsome1":
         return roomsome1.get_price(engine_hotel, arrive, departure, adults, children)
     elif engine == "roomsome2":
-        return roomsome2.get_price(engine_hotel, arrive, departure)
+        return roomsome2.get_price(engine_hotel, arrive, departure, adults, children)
     elif engine == "hhotels":
         return hhotels.get_price(engine_hotel, arrive, departure)
     elif engine == "optimus":
