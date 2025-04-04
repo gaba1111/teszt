@@ -1,7 +1,6 @@
 [
   {
     "name": "Aquaticum Hotel",
-    "engine": "optimus",
     "guest_categories": [
       {
         "guestId": 1,
