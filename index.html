@@ -106,19 +106,30 @@
     }
 
     function updateChildAgeSelectors() {
+      const existingValues = Array.from(document.querySelectorAll("select[name='childAge']"))
+                                  .map(select => parseInt(select.value));
+
       childrenAgesContainer.innerHTML = "";
+
       for (let i = 0; i < childCount; i++) {
         const label = document.createElement("label");
         label.textContent = `Gyermek ${i + 1} életkora:`;
+
         const select = document.createElement("select");
         select.name = "childAge";
         select.required = true;
+
         for (let age = 1; age <= 17; age++) {
           const option = document.createElement("option");
           option.value = age;
           option.textContent = age;
           select.appendChild(option);
         }
+
+        if (existingValues[i]) {
+          select.value = existingValues[i];
+        }
+
         childrenAgesContainer.appendChild(label);
         childrenAgesContainer.appendChild(select);
         childrenAgesContainer.appendChild(document.createElement("br"));
