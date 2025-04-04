@@ -98,7 +98,7 @@ def get_price(hotel_config, arrive, departure, adults=2, children=[]):
             if arak:
                 return f"A legkedvezőbb ár: {int(min(arak)):,} Ft".replace(",", " ")
             else:
-                return "Nem található megfelelő ár (nem-szenior, nem all inclusive)."
+                return "Nem található megfelelő ár (nem senior, nem all inclusive, nem reggelis, nem önellátással, nem kemping)."
 
         except Exception as e:
             return f"Hiba a JSON feldolgozása közben: {e}"
