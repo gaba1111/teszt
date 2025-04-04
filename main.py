@@ -42,7 +42,7 @@ def get_price():
     if engine == "resnweb":
         return resnweb.get_price(engine_hotel, arrive, departure)
     elif engine == "roomsome1":
-        return roomsome1.get_price(engine_hotel, arrive, departure)
+        return roomsome1.get_price(engine_hotel, arrive, departure, adults, children)
     elif engine == "roomsome2":
         return roomsome2.get_price(engine_hotel, arrive, departure)
     elif engine == "hhotels":
