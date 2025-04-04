@@ -1,5 +1,28 @@
 [
   {
-    "name": "Aquaticum Hotel"
+    "name": "Aquaticum Hotel",
+    "engine": "optimus",
+    "guest_categories": [
+      {
+        "guestId": 1,
+        "agelimitmin": 0,
+        "agelimitmax": 2
+      },
+      {
+        "guestId": 2,
+        "agelimitmin": 3,
+        "agelimitmax": 6
+      },
+      {
+        "guestId": 3,
+        "agelimitmin": 7,
+        "agelimitmax": 13
+      },
+      {
+        "guestId": 4,
+        "agelimitmin": 14,
+        "agelimitmax": 17
+      }
+    ]
   }
 ]
