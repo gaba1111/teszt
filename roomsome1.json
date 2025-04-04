@@ -3,13 +3,15 @@
     "name": "Calimbra Wellness Hotel",
     "url": "https://calimbrawellnesshotel.hu/online-foglalas/kereses",
     "origin": "https://calimbrawellnesshotel.hu",
-    "referer": "https://calimbrawellnesshotel.hu/online-foglalas/kereses"
+    "referer": "https://calimbrawellnesshotel.hu/online-foglalas/kereses",
+    "children": 17
   },
   {
     "name": "Hotel Délibáb",
     "url": "https://booking.hoteldelibab.hu/online-foglalas/kereses",
     "origin": "https://booking.hoteldelibab.hu",
-    "referer": "https://booking.hoteldelibab.hu/online-foglalas/kereses"
+    "referer": "https://booking.hoteldelibab.hu/online-foglalas/kereses",
+    "children": 17
   },
   {
     "name": "Grand Hotel Esztergom",
