@@ -81,11 +81,12 @@ def get_price(hotel_config, arrival, departure, adults=2, children=[]):
             if adjusted_children:
                 config_str += f"{len(adjusted_children)}g"
 
-            if config_str not in room["configuration"]:
+            matching_config = next((conf for conf in room["configuration"] if conf["type"] == config_str), None)
+            if not matching_config:
                 return None
 
             for age in adjusted_children:
-                if not (room["childagemin"] <= age <= room["childagemax"]):
+                if not (matching_config["childagemin"] <= age <= matching_config["childagemax"]):
                     return None
 
             child_str = "_".join([str(age) for age in adjusted_children] + ["0"] * (6 - len(adjusted_children)))
@@ -107,7 +108,7 @@ def get_price(hotel_config, arrival, departure, adults=2, children=[]):
             # 5. GET – ajánlatok
             res5 = session.get(url_offers)
             time.sleep(random.randint(4, 6))
-            prices = re.findall(r'(?<=data-price=")[^"]+(?=")', res5.text)
+            prices = re.findall(r'(?<=data-price=")[^\"]+(?=")', res5.text)
 
             if prices:
                 numeric_prices = [int(p.replace(" ", "").replace("\u202f", "").replace(",", "")) for p in prices]
