@@ -6,9 +6,9 @@ from datetime import datetime
 
 # Ez a függvény a szerverről hívódik meg, paraméterként kapja a szálloda konfigurációját,
 # valamint az érkezési és távozási dátumot
-def get_price(hotel_config, arrival, departure):
-    # Kinyerjük a konfigurációs adatokat
-    roomcodes = hotel_config["roomcodes"]  # Többféle szobakód, sorrendben próbáljuk őket
+
+def get_price(hotel_config, arrival, departure, adults=2, children=[]):
+    rooms = hotel_config["rooms"]
     hotelcode = hotel_config["hotelcode"]
     url_get_1 = hotel_config["url_get_1"]
     url_offers = hotel_config["url_offers"]
@@ -19,16 +19,25 @@ def get_price(hotel_config, arrival, departure):
     date_format = "%Y-%m-%d"
     number_of_nights = (datetime.strptime(departure, date_format) - datetime.strptime(arrival, date_format)).days
 
+    # A 18 év feletti gyerekeket felnőttként számoljuk
+    adjusted_children = []
+    for age in children:
+        if age >= 18:
+            adults += 1
+        else:
+            adjusted_children.append(age)
+
     # Létrehozunk egy session-t, amiben a cookie-k automatikusan megmaradnak
     session = requests.Session()
     session.headers.update({
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
     })
 
-    # Ez a belső függvény küld el 5 egymás utáni kérést egy adott szobakódra
-    def send_requests_for_roomcode(roomcode):
+    def send_requests(room):
         try:
-            # 1. GET kérés – első oldal betöltése, fontos a sütik miatt
+            roomcode = room["code"]
+
+            # 1. GET kérés – első oldal betöltése
             headers_1 = {
                 "authority": "www.hunguesthotels.hu",
                 "path": path,
@@ -36,10 +45,10 @@ def get_price(hotel_config, arrival, departure):
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*",
                 "Referer": referer
             }
-            res1 = session.get(url_get_1, headers=headers_1)
+            session.get(url_get_1, headers=headers_1)
             time.sleep(2)
 
-            # 2. POST – SAVE_TIMES adatmentés
+            # 2. POST – SAVE_TIMES
             data2 = {
                 "v1": "SAVE_TIMES",
                 "v2": f"{departure}_{departure}_{number_of_nights}_{arrival}_{departure}_{arrival}_{departure}",
@@ -50,10 +59,10 @@ def get_price(hotel_config, arrival, departure):
                 "v7": "",
                 "v8": "/_sys/_ele/100/save_data"
             }
-            res2 = session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data2, headers={"Referer": url_get_1})
+            session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data2, headers={"Referer": url_get_1})
             time.sleep(2)
 
-            # 3. POST – GET_ROOM adatlekérés
+            # 3. POST – GET_ROOM
             data3 = {
                 "v1": "GET_ROOM",
                 "v2": roomcode,
@@ -64,11 +73,24 @@ def get_price(hotel_config, arrival, departure):
                 "v7": "",
                 "v8": "/_sys/_ele/100/roomselection"
             }
-            res3 = session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data3, headers={"Referer": url_get_1})
+            session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data3, headers={"Referer": url_get_1})
             time.sleep(2)
 
-            # 4. POST – SAVE_ROOMS lekérés
-            v2_rooms = f"{roomcode}<->2f2g<->6_10_0_0_0_0<->{roomcode}_2_6_10_0_0_0_0<->0<->0<->0<->0<->0<->1"
+            # 4. POST – SAVE_ROOMS
+            config_str = f"{adults}f"
+            if adjusted_children:
+                config_str += f"{len(adjusted_children)}g"
+
+            if config_str not in room["configuration"]:
+                return None
+
+            for age in adjusted_children:
+                if not (room["childagemin"] <= age <= room["childagemax"]):
+                    return None
+
+            child_str = "_".join([str(age) for age in adjusted_children] + ["0"] * (6 - len(adjusted_children)))
+            v2_rooms = f"{roomcode}<->{config_str}<->{child_str}<->{roomcode}_{adults}_{child_str}<->0<->0<->0<->0<->0<->1"
+
             data4 = {
                 "v1": "SAVE_ROOMS",
                 "v2": v2_rooms,
@@ -79,49 +101,26 @@ def get_price(hotel_config, arrival, departure):
                 "v7": "",
                 "v8": "/_sys/_ele/100/save_data"
             }
-            res4 = session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data4, headers={"Referer": url_get_1})
+            session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data4, headers={"Referer": url_get_1})
             time.sleep(2)
 
-            # 5. GET kérés – az ajánlatok betöltése
+            # 5. GET – ajánlatok
             res5 = session.get(url_offers)
-            text = res5.text
-
-            prices = []
-            price_pattern = r'(?<=data-price=")[^\"]+(?=")'
-            description_pattern = r'<li>(.*?)</li>'
-
-            price_matches = list(re.finditer(price_pattern, text))
-
-            for match in price_matches:
-                price_str = match.group()
-                try:
-                    price_value = int(price_str.replace("\u202f", "").replace(",", "").replace(" ", ""))
-                except ValueError:
-                    continue
-
-                remaining_text = text[match.end():]
-                li_match = re.search(description_pattern, remaining_text, re.DOTALL)
-                if li_match:
-                    description = li_match.group(1).lower()
-                    if "félpanzió" in description:
-                        prices.append(price_value)
+            prices = re.findall(r'(?<=data-price=")[^"]+(?=")', res5.text)
 
             if prices:
-                return min(prices)
-            else:
-                return None
+                numeric_prices = [int(p.replace(" ", "").replace("\u202f", "").replace(",", "")) for p in prices]
+                return min(numeric_prices)
+            return None
 
         except Exception:
             return None
 
-    # Sorban végigpróbáljuk a szobakódokat, amíg nem találunk érvényes árat
-    for idx, code in enumerate(roomcodes):
-        result = send_requests_for_roomcode(code)
+    for idx, room in enumerate(rooms):
+        result = send_requests(room)
         if result is not None:
             return f"A legkedvezőbb ár: {int(result):,} Ft".replace(",", " ")
-        # Ha nem ez volt az utolsó szobakód, várunk 4–6 másodpercet a következő próbálkozásig
-        if idx < len(roomcodes) - 1:
-            delay = random.randint(4, 6)
-            time.sleep(delay)
+        if idx < len(rooms) - 1:
+            time.sleep(random.randint(4, 6))
 
-    return "Nem található ár egyik szobakódra sem."
+    return "Nem található ár egyik szobára sem."
