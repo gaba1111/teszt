@@ -46,7 +46,7 @@ def get_price(hotel_config, arrival, departure, adults=2, children=[]):
                 "Referer": referer
             }
             session.get(url_get_1, headers=headers_1)
-            time.sleep(2)
+            time.sleep(1)
 
             # 2. POST – SAVE_TIMES
             data2 = {
@@ -60,7 +60,7 @@ def get_price(hotel_config, arrival, departure, adults=2, children=[]):
                 "v8": "/_sys/_ele/100/save_data"
             }
             session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data2, headers={"Referer": url_get_1})
-            time.sleep(2)
+            time.sleep(1)
 
             # 3. POST – GET_ROOM
             data3 = {
@@ -74,7 +74,7 @@ def get_price(hotel_config, arrival, departure, adults=2, children=[]):
                 "v8": "/_sys/_ele/100/roomselection"
             }
             session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data3, headers={"Referer": url_get_1})
-            time.sleep(2)
+            time.sleep(1)
 
             # 4. POST – SAVE_ROOMS
             config_str = f"{adults}f"
@@ -102,10 +102,11 @@ def get_price(hotel_config, arrival, departure, adults=2, children=[]):
                 "v8": "/_sys/_ele/100/save_data"
             }
             session.post("https://www.hunguesthotels.hu/_sys/ajax.php", data=data4, headers={"Referer": url_get_1})
-            time.sleep(2)
+            time.sleep(1)
 
             # 5. GET – ajánlatok
             res5 = session.get(url_offers)
+            time.sleep(random.randint(4, 6))
             prices = re.findall(r'(?<=data-price=")[^"]+(?=")', res5.text)
 
             if prices:
@@ -119,8 +120,13 @@ def get_price(hotel_config, arrival, departure, adults=2, children=[]):
     for idx, room in enumerate(rooms):
         result = send_requests(room)
         if result is not None:
+            # Próbáljunk még egyet a következő rankú szobával is
+            if idx + 1 < len(rooms):
+                next_result = send_requests(rooms[idx + 1])
+                if next_result is not None:
+                    return f"A legkedvezőbb ár: {min(result, next_result):,} Ft".replace(",", " ")
             return f"A legkedvezőbb ár: {int(result):,} Ft".replace(",", " ")
         if idx < len(rooms) - 1:
-            time.sleep(random.randint(4, 6))
+            
 
     return "Nem található ár egyik szobára sem."
