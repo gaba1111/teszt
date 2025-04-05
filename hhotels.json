@@ -97,12 +97,89 @@
     "url_offers": "https://www.hunguesthotels.hu/hu/hotel/zalakaros/hunguest_hotel_freya/szobafoglalas/?offers",
     "path": "/hu/hotel/zalakaros/hunguest_hotel_freya/szobafoglalas/",
     "referer": "https://www.hunguesthotels.hu/hu/hotel/zalakaros/hunguest_hotel_freya/",
-    "roomcodes": [
-      "250",
-      "575",
-      "574",
-      "576"
-    ]
+    "rooms": [
+    {
+      "code": "656",
+      "name": "Kétágyas szoba - parkra néző oldalon",
+      "rank": 1,
+      "configuration": [
+        "1f",
+        "1f1g",
+        "2f"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "290",
+      "name": "Kétágyas szoba - pótágyazható - utcai oldal",
+      "rank": 2,
+      "configuration": [
+        "1f",
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "657",
+      "name": "Családi, összenyitható szoba (2 db erkélyes kétágyas szoba)",
+      "rank": 3,
+      "configuration": [
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g",
+        "2f2g",
+        "3f",
+        "3f1g",
+        "4f"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    },
+    {
+      "code": "667",
+      "name": "Junior apartman - parkra néző oldalon",
+      "rank": 4,
+      "configuration": [
+        "2f",
+        "2f1g",
+        "2f2g",
+        "3f"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "659",
+      "name": "Apartman – zuhanyzóval",
+      "rank": 5,
+      "configuration": [
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    },
+    {
+      "code": "658",
+      "name": "Lakosztály - parkra néző oldalon",
+      "rank": 6,
+      "configuration": [
+        "2f2g",
+        "3f1g",
+        "4f"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    }
+  ]
   },
   {
     "name": "HH Gyula",
@@ -111,12 +188,89 @@
     "url_offers": "https://www.hunguesthotels.hu/hu/hotel/gyula/hunguest-hotel-gyula/szobafoglalas/?offers",
     "path": "/hu/hotel/gyula/hunguest-hotel-gyula/hunguest_hotel_gyula/szobafoglalas/",
     "referer": "https://www.hunguesthotels.hu/hu/hotel/gyula/hunguest-hotel-gyula/hunguest_hotel_gyula/",
-    "roomcodes": [
-      "635",
-      "634",
-      "438",
-      "435"
-    ]
+    "rooms": [
+    {
+      "code": "656",
+      "name": "Kétágyas szoba - parkra néző oldalon",
+      "rank": 1,
+      "configuration": [
+        "1f",
+        "1f1g",
+        "2f"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "290",
+      "name": "Kétágyas szoba - pótágyazható - utcai oldal",
+      "rank": 2,
+      "configuration": [
+        "1f",
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "657",
+      "name": "Családi, összenyitható szoba (2 db erkélyes kétágyas szoba)",
+      "rank": 3,
+      "configuration": [
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g",
+        "2f2g",
+        "3f",
+        "3f1g",
+        "4f"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    },
+    {
+      "code": "667",
+      "name": "Junior apartman - parkra néző oldalon",
+      "rank": 4,
+      "configuration": [
+        "2f",
+        "2f1g",
+        "2f2g",
+        "3f"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "659",
+      "name": "Apartman – zuhanyzóval",
+      "rank": 5,
+      "configuration": [
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    },
+    {
+      "code": "658",
+      "name": "Lakosztály - parkra néző oldalon",
+      "rank": 6,
+      "configuration": [
+        "2f2g",
+        "3f1g",
+        "4f"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    }
+  ]
   },
   {
     "name": "HH Saliris",
@@ -125,10 +279,89 @@
     "url_offers": "https://www.hunguesthotels.hu/hu/hotel/egerszalok/hunguest_saliris/szobafoglalas/?offers",
     "path": "/hu/hotel/egerszalok/hunguest_saliris/szobafoglalas/",
     "referer": "https://www.hunguesthotels.hu/hu/hotel/egerszalok/hunguest_saliris/",
-    "roomcodes": [
-      "590",
-      "587"
-    ]
+    "rooms": [
+    {
+      "code": "656",
+      "name": "Kétágyas szoba - parkra néző oldalon",
+      "rank": 1,
+      "configuration": [
+        "1f",
+        "1f1g",
+        "2f"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "290",
+      "name": "Kétágyas szoba - pótágyazható - utcai oldal",
+      "rank": 2,
+      "configuration": [
+        "1f",
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "657",
+      "name": "Családi, összenyitható szoba (2 db erkélyes kétágyas szoba)",
+      "rank": 3,
+      "configuration": [
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g",
+        "2f2g",
+        "3f",
+        "3f1g",
+        "4f"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    },
+    {
+      "code": "667",
+      "name": "Junior apartman - parkra néző oldalon",
+      "rank": 4,
+      "configuration": [
+        "2f",
+        "2f1g",
+        "2f2g",
+        "3f"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "659",
+      "name": "Apartman – zuhanyzóval",
+      "rank": 5,
+      "configuration": [
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    },
+    {
+      "code": "658",
+      "name": "Lakosztály - parkra néző oldalon",
+      "rank": 6,
+      "configuration": [
+        "2f2g",
+        "3f1g",
+        "4f"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    }
+  ]
   },
   {
     "name": "HH Sóstó",
@@ -137,10 +370,89 @@
     "url_offers": "https://www.hunguesthotels.hu/hu/hotel/nyiregyhaza/hunguest_hotel_sosto/szobafoglalas/?offers",
     "path": "/hu/hotel/nyiregyhaza/hunguest_hotel_sosto/hotel_sosto/szobafoglalas/",
     "referer": "https://www.hunguesthotels.hu/hu/hotel/nyiregyhaza/hunguest_hotel_sosto/hotel_sosto/szobafoglalas/",
-    "roomcodes": [
-      "584",
-      "585"
-    ]
+    "rooms": [
+    {
+      "code": "656",
+      "name": "Kétágyas szoba - parkra néző oldalon",
+      "rank": 1,
+      "configuration": [
+        "1f",
+        "1f1g",
+        "2f"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "290",
+      "name": "Kétágyas szoba - pótágyazható - utcai oldal",
+      "rank": 2,
+      "configuration": [
+        "1f",
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "657",
+      "name": "Családi, összenyitható szoba (2 db erkélyes kétágyas szoba)",
+      "rank": 3,
+      "configuration": [
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g",
+        "2f2g",
+        "3f",
+        "3f1g",
+        "4f"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    },
+    {
+      "code": "667",
+      "name": "Junior apartman - parkra néző oldalon",
+      "rank": 4,
+      "configuration": [
+        "2f",
+        "2f1g",
+        "2f2g",
+        "3f"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "659",
+      "name": "Apartman – zuhanyzóval",
+      "rank": 5,
+      "configuration": [
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    },
+    {
+      "code": "658",
+      "name": "Lakosztály - parkra néző oldalon",
+      "rank": 6,
+      "configuration": [
+        "2f2g",
+        "3f1g",
+        "4f"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    }
+  ]
   },
   {
     "name": "HH Szeged",
@@ -149,10 +461,89 @@
     "url_offers": "https://www.hunguesthotels.hu/hu/hotel/szeged/hunguest_hotel_szeged/szobafoglalas/?offers",
     "path": "/hu/hotel/szeged/hunguest_hotel_szeged/hunguest_hotel_szeged/szobafoglalas/",
     "referer": "https://www.hunguesthotels.hu/hu/hotel/szeged/hunguest_hotel_szeged/hotel_szeged/",
-    "roomcodes": [
-      "299",
-      "302"
-    ]
+    "rooms": [
+    {
+      "code": "656",
+      "name": "Kétágyas szoba - parkra néző oldalon",
+      "rank": 1,
+      "configuration": [
+        "1f",
+        "1f1g",
+        "2f"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "290",
+      "name": "Kétágyas szoba - pótágyazható - utcai oldal",
+      "rank": 2,
+      "configuration": [
+        "1f",
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "657",
+      "name": "Családi, összenyitható szoba (2 db erkélyes kétágyas szoba)",
+      "rank": 3,
+      "configuration": [
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g",
+        "2f2g",
+        "3f",
+        "3f1g",
+        "4f"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    },
+    {
+      "code": "667",
+      "name": "Junior apartman - parkra néző oldalon",
+      "rank": 4,
+      "configuration": [
+        "2f",
+        "2f1g",
+        "2f2g",
+        "3f"
+      ],
+      "childagemin": 0,
+      "childagemax": 17
+    },
+    {
+      "code": "659",
+      "name": "Apartman – zuhanyzóval",
+      "rank": 5,
+      "configuration": [
+        "1f1g",
+        "1f2g",
+        "2f",
+        "2f1g"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    },
+    {
+      "code": "658",
+      "name": "Lakosztály - parkra néző oldalon",
+      "rank": 6,
+      "configuration": [
+        "2f2g",
+        "3f1g",
+        "4f"
+      ],
+      "childagemin": 4,
+      "childagemax": 11
+    }
+  ]
   }
 ]
 
