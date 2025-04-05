@@ -40,7 +40,7 @@ def get_price():
         return f"A(z) {hotel_nev} szálloda nem található a {engine} konfigurációban."
 
     if engine == "resnweb":
-        return resnweb.get_price(engine_hotel, arrive, departure)
+        return resnweb.get_price(engine_hotel, arrive, departure, adults, children)
     elif engine == "roomsome1":
         return roomsome1.get_price(engine_hotel, arrive, departure, adults, children)
     elif engine == "roomsome2":
