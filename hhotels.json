@@ -13,7 +13,7 @@
       "rank": 1,
       "configuration": [
         "1f",
-        "1f1gy",
+        "1f1g",
         "2f"
       ],
       "childagemin": 0,
@@ -25,10 +25,10 @@
       "rank": 2,
       "configuration": [
         "1f",
-        "1f1gy",
-        "1f2gy",
+        "1f1g",
+        "1f2g",
         "2f",
-        "2f1gy"
+        "2f1g"
       ],
       "childagemin": 0,
       "childagemax": 17
@@ -38,12 +38,12 @@
       "name": "Családi, összenyitható szoba (2 db erkélyes kétágyas szoba)",
       "rank": 3,
       "configuration": [
-        "1f1gy",
-        "1f2gy",
+        "1f1g",
+        "1f2g",
         "2f",
-        "2f1gy",
-        "2f2gy",
-        "3f1gy",
+        "2f1g",
+        "2f2g",
+        "3f1g",
         "4f"
       ],
       "childagemin": 4,
@@ -55,8 +55,8 @@
       "rank": 4,
       "configuration": [
         "2f",
-        "2f1gy",
-        "2f2gy",
+        "2f1g",
+        "2f2g",
         "3f"
       ],
       "childagemin": 0,
@@ -67,10 +67,10 @@
       "name": "Apartman – zuhanyzóval",
       "rank": 5,
       "configuration": [
-        "1f1gy",
-        "1f2gy",
+        "1f1g",
+        "1f2g",
         "2f",
-        "2f1gy"
+        "2f1g"
       ],
       "childagemin": 4,
       "childagemax": 11
@@ -80,8 +80,8 @@
       "name": "Lakosztály - parkra néző oldalon",
       "rank": 6,
       "configuration": [
-        "2f2gy",
-        "3f1gy",
+        "2f2g",
+        "3f1g",
         "4f"
       ],
       "childagemin": 4,
