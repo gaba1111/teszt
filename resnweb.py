@@ -17,9 +17,20 @@ HEADERS = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36',
 }
 
-def get_price(hotel_config, arrive, departure):
+def calculate_guest_data(adults, children, age_limit):
+    adult_count = adults
+    child_ages = []
+    for age in children:
+        if age <= age_limit:
+            child_ages.append(age)
+        else:
+            adult_count += 1
+    return adult_count, child_ages
+
+def get_price(hotel_config, arrive, departure, adults=2, children=[]):
     session = Session()
     requests_cfg = hotel_config["requests"]
+    age_limit = hotel_config["children"]
 
     # REQUEST 1 - GET
     response1 = session.get(requests_cfg[0]["url"], headers=HEADERS)
@@ -35,13 +46,13 @@ def get_price(hotel_config, arrive, departure):
         return "Nem sikerült lekérni a session ID-t (sid)."
 
     # REQUEST 2 - POST
+    adult_count, child_ages = calculate_guest_data(adults, children, age_limit)
+
     data2 = {
         'sid': sid,
         'method[name]': 'save_session_datas',
         'method[params][page]': 'index',
-        'method[params][rooms][0][adults]': '2',
-        'method[params][rooms][0][children][0]': '6',
-        'method[params][rooms][0][children][1]': '10',
+        'method[params][rooms][0][adults]': str(adult_count),
         'method[params][arrive]': arrive,
         'method[params][departure]': departure,
         'method[params][ca_currency]': 'HUF',
@@ -50,8 +61,11 @@ def get_price(hotel_config, arrive, departure):
         'method[params][ref]': '',
         'method[params][refhash]': '',
     }
-    data2.update(requests_cfg[1].get("params", {}))
 
+    for i, age in enumerate(child_ages):
+        data2[f'method[params][rooms][0][children][{i}]'] = str(age)
+
+    data2.update(requests_cfg[1].get("params", {}))
     session.post(requests_cfg[1]["url"], headers=HEADERS, data=data2)
 
     # REQUEST 3 - GET
