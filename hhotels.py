@@ -106,7 +106,7 @@ def get_price(hotel_config, arrival, departure, adults=2, children=[]):
 
             # 5. GET – ajánlatok
             res5 = session.get(url_offers)
-            time.sleep(random.randint(4, 6))
+            time.sleep(random.randint(2, 4))
             prices = re.findall(r'(?<=data-price=")[^"]+(?=")', res5.text)
 
             if prices:
@@ -127,6 +127,5 @@ def get_price(hotel_config, arrival, departure, adults=2, children=[]):
                     return f"A legkedvezőbb ár: {min(result, next_result):,} Ft".replace(",", " ")
             return f"A legkedvezőbb ár: {int(result):,} Ft".replace(",", " ")
         if idx < len(rooms) - 1:
-            
-
-    return "Nem található ár egyik szobára sem."
+            time.sleep(random.randint(4, 6))
+return "Nem található ár egyik szobára sem."
