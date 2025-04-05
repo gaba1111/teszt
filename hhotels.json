@@ -6,11 +6,50 @@
     "url_offers": "https://www.hunguesthotels.hu/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/szobafoglalas/?offers",
     "path": "/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/szobafoglalas/",
     "referer": "https://www.hunguesthotels.hu/hu/hotel/hajduszoboszlo/hunguest_hotel_beke/",
-    "roomcodes": [
-      "657",
-      "667",
-      "658"
-    ]
+    "rooms": [
+    {
+      "code": "656",
+      "name": "Kétágyas szoba - parkra néző oldalon",
+      "rank": 1,
+      "configuration": ["1f", "1f1gy", "2f"],
+      "child_ages": [0, 17]
+    },
+    {
+      "code": "290",
+      "name": "Kétágyas szoba - pótágyazható - utcai oldal",
+      "rank": 2,
+      "configuration": ["1f", "1f1gy", "1f2gy", "2f", "2f1gy"],
+      "child_ages": [0, 17]
+    },
+    {
+      "code": "657",
+      "name": "Családi, összenyitható szoba (2 db erkélyes kétágyas szoba)",
+      "rank": 3,
+      "configuration": ["1f1gy", "1f2gy", "2f", "2f1gy", "2f2gy", "3f1gy", "4f"],
+      "child_ages": [4, 11]
+    },
+    {
+      "code": "667",
+      "name": "Junior apartman - parkra néző oldalon",
+      "rank": 4,
+      "configuration": ["2f", "2f1gy", "2f2gy", "3f"],
+      "child_ages": [0, 17]
+    },
+    {
+      "code": "659",
+      "name": "Apartman – zuhanyzóval",
+      "rank": 5,
+      "configuration": ["1f1gy", "1f2gy", "2f", "2f1gy"],
+      "child_ages": [4, 11]
+    },
+    {
+      "code": "658",
+      "name": "Lakosztály - parkra néző oldalon",
+      "rank": 6,
+      "configuration": ["2f2gy", "3f1gy", "4f"],
+      "child_ages": [4, 11]
+    }  
+   ]
   },
   {
     "name": "HH Freya",
